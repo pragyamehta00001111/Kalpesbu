@@ -1,725 +1,1350 @@
-<!DOCTYPE html> 
-<html lang="gu"> 
-<head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>Anu Trading | Sanjeli Anaj Mandi - ખડેતોૂ	 માટે દૈિનક ખરીદી ભાવ</title> 
-  <meta name="description" content="અન ુ ટ્રેડંગ - સજેંલી અનાજ મડંી. ખડેતોૂ	 પાસથેી સીધા અનાજ અને કઠોળની સૌથી ઊંચા ભાવે ખરીદી. કલ્પશે મહતાે	 9825565053, સદંીપ મહતાે	 9429840460"> 
-  <style> 
-    :root { 
-      --primary: #1b4332; 
-      --primary-dark: #081c15; 
-      --primary-light: #2d6a4f; 
-      --accent: #d97706; 
-      --accent-hover: #b45309; 
-      --gold: #f59e0b;       --bg: #f8fafc; 
-      --card-bg: #ffffff; 
-      --text-main: #1e293b; 
-      --text-muted: #64748b; 
-      --border: #e2e8f0; 
-      --success: #16a34a; 
-      --radius: 12px; 
-      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); 
-      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); 
-    } 
- 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, 
-'Segoe UI', Roboto, 'Noto Sans Gujarati', sans-serif; }     body { background-color: var(--bg); color: var(--text-main); line-height: 1.5; } 
- 
-    header { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); color: white; position: sticky; top: 0; z-index: 50; box-shadow: var(--shadow); } 
-    .top-bar { background-color: rgba(0, 0, 0, 0.28); font-size: 0.85rem; padding: 6px 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; } 
-    .lang-switcher { display: flex; gap: 6px; align-items: center; } 
-    .lang-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 2px 10px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; } 
-    .lang-btn.active, .lang-btn:hover { background: var(--gold); color: #081c15; font-weight: 700; border-color: var(--gold); } 
- 
-    .nav-container { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; gap: 15px; } 
-    .brand-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }     .brand-icon { background: var(--gold); color: var(--primary-dark); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4); flex-shrink: 0; } 
-    .brand-text h1 { font-size: 1.3rem; font-weight: 800; letter-spacing: 0.5px; line-height: 1.2; } 
-    .brand-text p { font-size: 0.82rem; color: #cbd5e1; } 
-    .header-actions { display: flex; align-items: center; gap: 10px; } 
- 
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; cursor: pointer; text-decoration: none; transition: all 0.2s ease; border: none; } 
-    .btn-admin { background-color: rgba(255, 255, 255, 0.15); color: white; border: 1px solid rgba(255, 255, 255, 0.3); } 
-    .btn-admin:hover { background-color: rgba(255, 255, 255, 0.25); } 
-    .btn-call { background-color: var(--gold); color: var(--primary-dark); font-weight: 700; } 
-    .btn-call:hover { background-color: #e08e0b; transform: translateY(-1px); } 
- 
-    .hero { background: linear-gradient(180deg, #1b4332 0%, #2d6a4f 100%); color: white; padding: 36px 20px 55px; text-align: center; } 
-    .hero-content { max-width: 900px; margin: 0 auto; } 
-    .hero-badge { display: inline-block; background-color: rgba(245, 158, 11, 0.2); border: 1px solid var(--gold); color: #fef08a; padding: 4px 14px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; margin-bottom: 12px; } 
-    .hero h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 10px; line-height: 1.3; } 
-    .hero p { font-size: 1.02rem; color: #e2e8f0; max-width: 760px; margin: 0 auto 20px; } 
- 
-    .trust-badges { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 
-14px; margin-top: 22px; text-align: left; } 
-    .trust-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: var(--radius); padding: 12px 14px; display: flex; align-items: center; gap: 12px; } 
-    .trust-icon { font-size: 1.4rem; background: rgba(255, 255, 255, 0.15); width: 40px; height: 
-40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; } 
-    .trust-card strong { display: block; font-size: 0.9rem; } 
-    .trust-card span { font-size: 0.76rem; color: #cbd5e1; } 
- 
-    .container { max-width: 1200px; margin: -25px auto 40px; padding: 0 16px; position: relative; z-index: 10; } 
-    .card { background: var(--card-bg); border-radius: var(--radius); box-shadow: 
-var(--shadow-lg); border: 1px solid var(--border); padding: 22px; margin-bottom: 24px; }     .section-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 14px; } 
-    .section-title { display: flex; align-items: center; gap: 10px; } 
-    .section-title h3 { font-size: 1.3rem; color: var(--primary-dark); font-weight: 800; } 
-    .live-indicator { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 700; color: var(--success); background: #dcfce7; padding: 3px 10px; border-radius: 20px; }     .live-dot { width: 8px; height: 8px; background-color: var(--success); border-radius: 50%; animation: pulse 1.8s infinite; } 
-    @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.3); } 100% { opacity: 1; transform: scale(1); } } 
- 
-    .rates-meta { display: flex; gap: 10px; align-items: center; font-size: 0.88rem; color: var(--text-muted); margin-top: 4px; } 
-    .share-whatsapp-btn { background-color: #25d366; color: white; text-decoration: none; padding: 8px 15px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s; } 
-    .share-whatsapp-btn:hover { background-color: #1eb857; } 
- 
-    .table-container { overflow-x: auto; margin-top: 10px; }     table { width: 100%; border-collapse: collapse; text-align: left; }     th { background-color: #f8fafc; color: #475569; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; padding: 12px 14px; border-bottom: 2px solid var(--border); }     td { padding: 13px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }     tr:hover { background-color: #f8fafc; } 
-    .crop-name { font-weight: 700; color: var(--primary-dark); font-size: 1.02rem; display: flex; align-items: center; gap: 8px; } 
-    .crop-sub { font-size: 0.8rem; color: var(--text-muted); font-weight: normal; } 
-    .price-tag-mann { font-size: 1.15rem; font-weight: 800; color: #065f46; background: #ecfdf5; padding: 4px 10px; border-radius: 6px; display: inline-block; } 
-    .price-tag-quintal { font-size: 1.08rem; font-weight: 700; color: #1e3a8a; } 
-    .badge-trend { font-size: 0.78rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px; }     .trend-up { background-color: #dcfce7; color: #15803d; } 
-    .trend-stable { background-color: #f1f5f9; color: #475569; } 
-    .trend-high { background-color: #fef3c7; color: #b45309; } 
- 
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; } 
-    @media (max-width: 860px) { .grid-2 { grid-template-columns: 1fr; } } 
-    .form-group { margin-bottom: 15px; }     label { display: block; font-size: 0.88rem; font-weight: 700; color: #334155; margin-bottom: 
-6px; }     select, input[type="number"], input[type="text"], input[type="password"] { width: 100%; padding: 10px 12px; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 0.98rem; transition: border-color 0.2s; background: white; }     select:focus, input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15); } 
- 
-    .calc-result-box { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 
-1.5px solid #86efac; border-radius: 10px; padding: 16px; margin-top: 14px; text-align: center; } 
-    .calc-result-title { font-size: 0.85rem; color: #166534; font-weight: 600; } 
-    .calc-result-amount { font-size: 1.9rem; font-weight: 900; color: #14532d; margin: 3px 0; } 
- 
-    .contacts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 
-18px; margin-top: 10px; } 
-    .partner-card { background: white; border: 1.5px solid #e2e8f0; border-radius: var(--radius); padding: 18px; position: relative; overflow: hidden; box-shadow: var(--shadow); transition: 
-transform 0.2s, box-shadow 0.2s; } 
-    .partner-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: 
-#cbd5e1; } 
-    .partner-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--gold), var(--primary)); } 
-    .partner-name { font-size: 1.22rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 2px; } 
-    .partner-role { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px; } 
-    .partner-phone { display: flex; align-items: center; gap: 8px; font-size: 1.18rem; font-weight: 
-800; color: #1e293b; margin-bottom: 15px; } 
-    .contact-btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; } 
-    .btn-call-outline { background: #f1f5f9; color: #0f172a; text-decoration: none; padding: 9px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; text-align: center; display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid #cbd5e1; } 
-    .btn-call-outline:hover { background: #e2e8f0; } 
-    .btn-whatsapp-outline { background: #ecfdf5; color: #15803d; text-decoration: none; padding: 9px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; text-align: center; display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid #bbf7d0; }     .btn-whatsapp-outline:hover { background: #dcfce7; } 
- 
-    .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.65); backdrop-filter: 
-blur(4px); display: none; align-items: center; justify-content: center; z-index: 100; padding: 16px; 
-} 
-    .modal-overlay.active { display: flex; } 
-    .modal-box { background: white; width: 100%; max-width: 680px; max-height: 90vh; border-radius: 14px; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.25); display: flex; flex-direction: 
-column; overflow: hidden; } 
-    .modal-header { padding: 16px 20px; background: var(--primary-dark); color: white; display: 
-flex; justify-content: space-between; align-items: center; }     .modal-header h4 { font-size: 1.15rem; font-weight: 800; }     .btn-close { background: transparent; border: none; color: white; font-size: 1.5rem; cursor: 
-pointer; line-height: 1; } 
-    .modal-body { padding: 18px; overflow-y: auto; } 
-    .modal-footer { padding: 14px 20px; background: #f8fafc; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 12px; } 
-    .crop-edit-row { display: grid; grid-template-columns: 2fr 1.2fr 1.2fr 1fr; gap: 10px; align-items: 
-center; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid #f1f5f9; } 
-    @media (max-width: 600px) { .crop-edit-row { grid-template-columns: 1fr 1fr; } } 
- 
-    .fab-whatsapp { position: fixed; bottom: 22px; right: 22px; background: #25d366; color: white; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: 
-center; font-size: 28px; box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4); z-index: 40; text-decoration: none; transition: transform 0.2s; } 
-    .fab-whatsapp:hover { transform: scale(1.08); } 
- 
-    footer { background: #0f172a; color: #94a3b8; padding: 36px 20px 20px; font-size: 0.88rem; } 
-    .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 
-1fr 1fr; gap: 28px; margin-bottom: 25px; } 
-    @media (max-width: 768px) { .footer-content { grid-template-columns: 1fr; } } 
-    .footer-bottom { max-width: 1200px; margin: 0 auto; text-align: center; padding-top: 18px; border-top: 1px solid #334155; font-size: 0.8rem; } 
-    .guideline-item { display: flex; gap: 12px; margin-bottom: 12px; } 
-    .guideline-num { background: #e2e8f0; color: #334155; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.78rem; flex-shrink: 0; } 
-  </style> 
-</head> 
-<body> 
- 
-  <!-- Top Bar & Language Selector --> 
-  <header> 
-    <div class="top-bar"> 
-      <div id="mandi-location-badge">📍 સજેંલી અનાજ મડંી (સજેંલી, જી. દાહોદ, ગજરાતુ	) | Sanjeli 
-Grain Market</div> 
-      <div style="display: flex; align-items: center; gap: 12px;"> 
-        <div class="lang-switcher"> 
-          <span style="font-size: 0.75rem; color: #cbd5e1;">ભાષા / Language:</span> 
-          <button class="lang-btn active" id="btn-lang-gu" onclick="setLanguage('gu')">ગજરાતીુ	</button> 
-          <button class="lang-btn" id="btn-lang-hi" onclick="setLanguage('hi')">हन्दी</button> 
-          <button class="lang-btn" id="btn-lang-en" onclick="setLanguage('en')">English</button> 
-        </div> 
-      </div> 
-    </div> 
-    <div class="nav-container"> 
-      <a href="#" class="brand-logo"> 
-        <div class="brand-icon">🌾</div> 
-        <div class="brand-text"> 
-          <h1 id="brand-title">અન ુ ટ્રેડંગ (ANU TRADING)</h1> 
-          <p id="brand-sub">સજેંલી અનાજ મડંી — ખડેતોૂ	 પાસથેી અનાજ-કઠોળની સીધી ખરીદી</p> 
-        </div> 
-      </a> 
-      <div class="header-actions"> 
-        <button class="btn btn-admin" onclick="openAdminModal()"> 
-          ⚙ <span id="nav-admin-text">ભાવ અપડેટ (Admin)</span> 
-        </button> 
-        <a href="tel:9825565053" class="btn btn-call"> 
-          📞 <span id="nav-call-text">કોલ કરો</span> 
-        </a> 
-      </div> 
-    </div> 
-  </header> 
- 
-  <!-- Hero Section --> 
-  <section class="hero"> 
-    <div class="hero-content"> 
-      <span class="hero-badge" id="hero-badge-text">✅ સજેંલી અનાજ મડંીમાં ખડેતોનીૂ િવશ્વસનીય પઢેી</span> 
-      <h2 id="hero-title-text">ખડેતૂ િમત્રો, તમારા પાકન ું મળેવો સાચ ું અને સવ ચ્ચ મલ્યૂ	</h2> 
-      <p id="hero-desc-text">અન ુ ટ્રેડંગ ખાતે મકાઈ, ઘઉં, સોયાબીન, ચણા, તવરેુ તથા તમામ અનાજ અને કઠોળની સૌથી ઊંચા બજાર ભાવે સીધી ખરીદી. ૧૦૦% સાચો ડજટલ કાટંો અને રોકડ અથવા બકેં ખાતામાં તરંતુ પમેન્ટે !</p> 
- 
-      <div class="trust-badges"> 
-        <div class="trust-card"> 
-          <div class="trust-icon">⚖</div> 
-          <div> 
-            <strong id="badge-1-title">૧૦૦% સચોટ કાટંો</strong> 
-            <span id="badge-1-sub">ડજટલ ચોક્કસ વજન</span> 
-          </div> 
-        </div> 
-        <div class="trust-card"> 
-          <div class="trust-icon">💵</div> 
-          <div> 
-            <strong id="badge-2-title">તરંતુ	 પમેન્ટે	</strong> 
-            <span id="badge-2-sub">રોકડ અથવા બકેં ખાતામાં</span> 
-          </div>
-        </div> 
-        <div class="trust-card"> 
-          <div class="trust-icon">📈</div> 
-          <div> 
-            <strong id="badge-3-title">સવ ચ્ચ બજાર ભાવ</strong>             <span id="badge-3-sub">દૈિનક લાઈવ રેટ મજબુ	</span> 
-          </div> 
-        </div> 
-        <div class="trust-card"> 
-          <div class="trust-icon">🤝</div> 
-          <div> 
-            <strong id="badge-4-title">પારદશક વ્યવહાર</strong> 
-            <span id="badge-4-sub">ખડેતોૂ	 સાથે વષ નો નાતો</span> 
-          </div> 
-        </div> 
-      </div> 
-    </div> 
-  </section> 
- 
-  <main class="container"> 
- 
-    <!-- Live Rates Table --> 
-    <section class="card" id="rates-section"> 
-      <div class="section-header"> 
-        <div> 
-          <div class="section-title"> 
-            <h3 id="table-heading">🌾 આજના દૈિનક ખરીદી ભાવ (Daily Purchase Rates)</h3> 
-            <span class="live-indicator"> 
-              <span class="live-dot"></span> LIVE 
-            </span> 
-          </div> 
-          <div class="rates-meta"> 
-            <span id="current-date-text">તારીખ: આજનો ભાવ</span> 
-            <span>•</span> 
-            <span id="rate-location-text">સ્થળ: અન ુ ટ્રેડંગ, સજેંલી મડંી</span> 
-          </div> 
-        </div> 
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;"> 
-          <a href="#" class="share-whatsapp-btn" onclick="shareRatesOnWhatsApp(event)">             📲 <span id="share-wa-text">વ્હોટ્સએપ પર ભાવ શરે કરો</span> 
-          </a> 
-          <button class="btn btn-admin" style="background:#475569; color:white;" onclick="openAdminModal()"> 
-            ✏ <span id="btn-edit-rates-text">ભાવ અપડેટ કરો</span> 
-          </button> 
-        </div> 
-      </div> 
- 
-      <div class="table-container"> 
-        <table> 
-          <thead> 
-            <tr> 
-              <th id="th-crop">જણસી / પાક (Crop)</th> 
-              <th id="th-mann">ભાવ પ્રિત ૨૦ કલો (મણ / Mann)</th> 
-              <th id="th-qtl">ભાવ પ્રિત ૧૦૦ કલો (ક્વન્ટલ / Qtl)</th> 
-              <th id="th-trend">બજાર વલણ (Trend)</th> 
-              <th id="th-action">પછપરછૂ	</th> 
-            </tr> 
-          </thead> 
-          <tbody id="rates-table-body"> 
-            <!-- Dynamic Rates Content --> 
-          </tbody> 
-        </table> 
-      </div> 
- 
-      <div style="margin-top: 15px; font-size: 0.85rem; color: #64748b; background: #f8fafc; padding: 10px 14px; border-radius: 8px; border: 1px dashed #cbd5e1;" id="quality-note-text">         ℹ <strong>નોંધ:</strong> દશાવલે ભાવ સામાન્ય સકાૂ અને સાફ માલ માટેના છે. માલમાં ભજેન ું પ્રમાણ અને દાણાની ક્વોલટી અનસારુ	 ભાવમાં વધ-ઘટ થઈ શકે છે. માલ લાવતા પહલાંે	 ફોન પર પટુ	 કરી લવેી. 
-      </div> 
-    </section> 
- 
-    <!-- Calculator & Farmer Info --> 
-    <div class="grid-2"> 
-      <!-- Calculator --> 
-      <section class="card"> 
-        <div class="section-title" style="margin-bottom: 14px;"> 
-          <h3 id="calc-heading">🧮 ખડેતૂ ગણતરી યત્રં (Crop Value Calculator)</h3> 
-        </div> 
-        <p style="font-size: 0.88rem; color: #64748b; margin-bottom: 14px;" id="calc-sub-text">           તમારી જણસી પસદં કરી વજન નાખો અને તમારો અંદાજત કલૂ રોકડ નફો જાણો: 
-        </p> 
- 
-        <div class="form-group"> 
-          <label for="calc-crop" id="lbl-select-crop">જણસી પસદં કરો:</label> 
-          <select id="calc-crop" onchange="calculateCropValue()"> 
-            <!-- Options populated in JS --> 
-          </select> 
-        </div> 
- 
-        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;"> 
-          <div class="form-group"> 
-            <label for="calc-weight" id="lbl-weight">કલૂ વજન:</label> 
-            <input type="number" id="calc-weight" value="20" min="1" oninput="calculateCropValue()"> 
-          </div> 
-          <div class="form-group"> 
-            <label for="calc-unit" id="lbl-unit">એકમ (Unit):</label> 
-            <select id="calc-unit" onchange="calculateCropValue()"> 
-              <option value="mann">મણ (20 KG)</option> 
-              <option value="quintal">ક્વન્ટલ (100 KG)</option> 
-              <option value="kg">કલોગ્રામ (KG)</option> 
-            </select> 
-          </div> 
-        </div> 
- 
-        <div class="calc-result-box"> 
-          <div class="calc-result-title" id="calc-res-label">અંદાજત મળવાપાત્ર રકમ (Estimated 
-Payout)</div> 
-          <div class="calc-result-amount" id="calc-result-val">₹ 0.00</div> 
-          <div style="font-size: 0.82rem; color: #15803d;" id="calc-details">ભાવ લોડ થઈ રહ્યો છે...</div> 
-        </div> 
- 
-        <button class="btn btn-call" style="width: 100%; margin-top: 14px; padding: 11px;" onclick="sendCalculatorToWhatsApp()"> 
-          💬 <span id="btn-calc-wa">આ જણસી વચેવા માટે વ્હોટ્સએપ કરો</span> 
-        </button> 
-      </section> 
- 
-      <!-- Guidelines --> 
-      <section class="card"> 
-        <div class="section-title" style="margin-bottom: 14px;"> 
-          <h3 id="guide-heading">📋 માલ લાવનાર ખડેતોૂ	 માટે અગત્યની સચનાૂ	</h3> 
-        </div> 
-        <div style="display: flex; flex-direction: column; gap: 12px;"> 
-          <div class="guideline-item"> 
-            <div class="guideline-num">૧</div> 
-            <div> 
-              <strong id="g1-title">સકોૂ અને સાફ માલ લાવો:</strong> 
-              <p style="font-size: 0.85rem; color: #64748b;" id="g1-desc">દાણામાં ભજે ઓછો અને કચરો/ધળૂ વગરનો સાફ માલ લાવવાથી સવ ચ્ચ બજાર ભાવ મળે છે.</p> 
-            </div> 
-          </div> 
-          <div class="guideline-item"> 
-            <div class="guideline-num">૨</div> 
-            <div> 
-              <strong id="g2-title">ડજટલ કાટંા પર ચોક્કસ વજન:</strong> 
-              <p style="font-size: 0.85rem; color: #64748b;" id="g2-desc">અમારી પઢેી ખાતે સરકારી માન્યતા પ્રાપ્ત ઇલક્ેટ્રોિનક કાટંાથી પારદશક વજન કરવામાં આવે છે.</p> 
-            </div> 
-          </div> 
-          <div class="guideline-item"> 
-            <div class="guideline-num">૩</div> 
-            <div> 
-              <strong id="g3-title">તરંતુ	 પમેન્ટનીે	 ખાતરી:</strong> 
-              <p style="font-size: 0.85rem; color: #64748b;" id="g3-desc">રોકડ રકમ અથવા તમારા બકેં ખાતામાં RTGS/NEFT/UPI દ્વારા તરંતુ	 પસૈા જમા.</p> 
-            </div> 
-          </div> 
-          <div class="guideline-item"> 
-            <div class="guideline-num">૪</div> 
-            <div> 
-              <strong id="g4-title">મોટા જથ્થા / ગાડી માટે અગાઉથી જાણ:</strong> 
-              <p style="font-size: 0.85rem; color: #64748b;" id="g4-desc">ટ્રેક્ટર અથવા આઈશર ભરીને માલ લાવવા માગંતા હો તો અગાઉથી ફોન કરી સમય નક્કી કરી શકો છો.</p> 
-            </div> 
-          </div> 
-        </div> 
-      </section> 
-    </div> 
- 
-    <!-- Contact & Purchasing Partners Section --> 
-    <section class="card"> 
-      <div class="section-title" style="margin-bottom: 6px;"> 
-        <h3 id="contact-heading">📞 સપંક સત્રૂ — અન ુ ટ્રેડંગ (Anu Trading)</h3> 
-      </div> 
-      <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 18px;" id="contact-sub-text">         માલ વચેવા, દૈિનક ભાવની પછપરછૂ	 અથવા મડંીમાં ગાડી ખાલી કરાવવા માટે સીધો સપંક કરો: 
-      </p> 
- 
-      <div class="contacts-grid"> 
-        <!-- Kalpesh Mehta --> 
-        <div class="partner-card"> 
-          <div class="partner-name">કલ્પશે પ્રવીણચદ્રં મહતાે	</div> 
-          <div class="partner-role">Kalpesh Pravinchandra Mehta • સચંાલક / ઓનર</div> 
-          <div class="partner-phone"> 
-            <span>📱</span> 98255 65053 
-          </div> 
-          <div class="contact-btn-group"> 
-            <a href="tel:9825565053" class="btn-call-outline">               📞 કોલ કરો 
-            </a> 
-            <a 
-href="https://wa.me/919825565053?text=નમસ્તે%20કલ્પશેભાઈ,%20હ%20ું	સજેંલી%20મડંીમાં%20મા લ%20વચેવા%20માટે%20પછપરછૂ	%20કરવા%20માગ%20ું	છું." target="_blank" class="btn-whatsapp-outline"> 
-              💬 WhatsApp 
-            </a> 
-          </div> 
-        </div> 
- 
-        <!-- Sandeep Mehta --> 
-        <div class="partner-card"> 
-          <div class="partner-name">સદંીપ પ્રવીણચદ્રં મહતાે	</div> 
-          <div class="partner-role">Sandeep Pravinchandra Mehta • સચંાલક / ઓનર</div> 
-          <div class="partner-phone"> 
-            <span>📱</span> 94298 40460 
-          </div> 
-          <div class="contact-btn-group"> 
-            <a href="tel:9429840460" class="btn-call-outline">               📞 કોલ કરો 
-            </a> 
-            <a 
-href="https://wa.me/919429840460?text=નમસ્તે%20સદંીપભાઈ,%20હ%20ું	સજેંલી%20મડંીમાં%20મા લ%20વચેવા%20માટે%20પછપરછૂ	%20કરવા%20માગ%20ું	છું." target="_blank" class="btn-whatsapp-outline"> 
-              💬 WhatsApp 
-            </a> 
-          </div> 
-        </div> 
-      </div>
- 
-      <!-- Address Box --> 
-      <div style="margin-top: 22px; background: #f1f5f9; padding: 16px; border-radius: 10px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;"> 
-        <div style="font-size: 1.8rem;">🏬</div> 
-        <div> 
-          <strong id="addr-title">પઢેીન ું સરનામ ું (Mandi Address):</strong> 
-          <p style="color: #475569; font-size: 0.9rem;" id="addr-desc">અન ુ ટ્રેડંગ (Anu Trading), અનાજ માકટ યાડ / એ.પી.એમ.સી., સજેંલી, જલ્લો દાહોદ, ગજરાતુ	 - ૩૮૯૧૭૫</p> 
-        </div> 
-      </div> 
-    </section> 
- 
-  </main> 
- 
-  <!-- Footer --> 
-  <footer> 
-    <div class="footer-content"> 
-      <div> 
-        <h4 style="color: white; font-size: 1.05rem; margin-bottom: 8px;">અન ુ ટ્રેડંગ — સજેંલી અનાજ મડંી</h4> 
-        <p style="line-height: 1.6;">ખડેતૂ ભાઈઓ પાસથેી સીધા પાકની ખરીદી કરતી સજેંલીની િવશ્વાસપાત્ર વપેારી પઢેી. મકાઈ, ઘઉં, સોયાબીન, ચણા, અડદ, તવરેુ	, રાયડો અને તમામ અનાજ-કઠોળના યોગ્ય ભાવ અને સચોટ તોલમાપની ખાતરી.</p> 
-      </div> 
-      <div> 
-        <h4 style="color: white; font-size: 0.95rem; margin-bottom: 8px;">મખ્યુ	 ખરીદી પાક</h4> 
-        <ul style="list-style: none; line-height: 1.7;"> 
-          <li>🌾 પીળી/સફેદ મકાઈ (Maize)</li> 
-          <li>🌾 ટુકડી/લોકવન ઘઉં (Wheat)</li> 
-          <li>🌱 દેશી ચણા (Gram / Chana)</li> 
-          <li>🌿 સોયાબીન (Soybean)</li> 
-          <li>🌾 તવરેુ	 અને અડદ (Pulses)</li> 
-        </ul> 
-      </div> 
-      <div> 
-        <h4 style="color: white; font-size: 0.95rem; margin-bottom: 8px;">સપંક નબંર</h4>         <p style="margin-bottom: 6px;"><strong>કલ્પશે મહતાે	:</strong> <a href="tel:9825565053" style="color:#fcd34d; text-decoration:none;">9825565053</a></p> 
-        <p style="margin-bottom: 6px;"><strong>સદંીપ મહતાે	:</strong> <a href="tel:9429840460" style="color:#fcd34d; text-decoration:none;">9429840460</a></p>         <p><strong>સ્થળ:</strong> સજેંલી, દાહોદ (ગજરાતુ	)</p> 
-      </div>
-    </div> 
-    <div class="footer-bottom"> 
-      © <span id="year-text">2026</span> અન ુ ટ્રેડંગ (Anu Trading) - સજેંલી અનાજ મડંી. સવાિધકાર સરુ	ત. 
-    </div> 
-  </footer> 
- 
-  <!-- Floating WhatsApp Button --> 
-  <a 
-href="https://wa.me/919825565053?text=નમસ્તે%20અન%20ુ ટ્રેડંગ,%20આજના%20સજેંલી%20મડંી ના%20ખરીદી%20ભાવ%20િવશે%20માહતી%20આપો." target="_blank" class="fab-whatsapp" title="WhatsApp પર વાત કરો"> 
-    💬 
-  </a> 
- 
-  <!-- Admin Modal for Daily Rate Updating --> 
-  <div class="modal-overlay" id="admin-modal"> 
-    <div class="modal-box"> 
-      <div class="modal-header"> 
-        <h4 id="admin-modal-title">⚙ દૈિનક ખરીદી ભાવ અપડેટ પનેલ</h4> 
-        <button class="btn-close" onclick="closeAdminModal()">&times;</button>       </div> 
-      <div class="modal-body"> 
-        <div id="pin-section" style="text-align: center; padding: 20px 10px;"> 
-          <p style="margin-bottom: 12px; font-weight: 600; color: #334155;" id="pin-prompt-text">ભાવ બદલવા માટે િસક્યોરટી િપન (PIN) દાખલ કરો:</p> 
-          <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;"> 
-            <input type="password" id="admin-pin" placeholder="PIN (દા.ત. 1234)" style="max-width: 220px; text-align: center; font-size: 1.1rem; letter-spacing: 4px;">             <button class="btn btn-call" onclick="verifyPin()">લોગન</button> 
-          </div> 
-          <small style="color: #64748b;">(ડફોલ્ટ િપન / Default PIN: 
-<strong>1234</strong>)</small> 
-        </div> 
- 
-        <div id="editor-section" style="display: none;"> 
-          <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px;" id="editor-info-text">             જણસીનો ભાવ બદલીને <strong>"ભાવ સવે કરો"</strong> બટન દબાવો. આ ભાવ વબેસાઈટ પર તરત જ લાઈવ થઈ જશે. 
-          </p> 
- 
-          <div style="font-weight: 700; font-size: 0.8rem; text-transform: uppercase; color: #475569; margin-bottom: 8px; display: grid; grid-template-columns: 2fr 1.2fr 1.2fr 1fr; gap: 10px;"> 
-            <div>જણસી (Crop)</div> 
-            <div>ભાવ (૨૦ ક/મણ)</div> 
-            <div>ભાવ (ક્વન્ટલ)</div> 
-            <div>ટ્રેન્ડ</div> 
-          </div> 
- 
-          <div id="crop-edit-list"> 
-            <!-- Dynamic edit rows --> 
-          </div> 
- 
-          <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;"> 
-            <button class="btn" style="background: #e2e8f0; color: #334155;" onclick="addNewCropPrompt()">               ➕ નવી જણસી ઉમરેો 
-            </button> 
-            <button class="btn" style="background: #fee2e2; color: #991b1b;" onclick="resetDefaultRates()">               🔄 ડફોલ્ટ રસટે 
-            </button> 
-          </div> 
-        </div> 
-      </div> 
-      <div class="modal-footer" id="modal-footer" style="display: none;">         <button class="btn" style="background: #e2e8f0; color: #334155;" onclick="closeAdminModal()">બધં કરો</button> 
-        <button class="btn btn-call" onclick="saveUpdatedRates()">💾 ભાવ સવે કરો 
-(Publish)</button> 
-      </div> 
-    </div> 
-  </div> 
- 
-  <script>     let currentLang = 'gu'; 
- 
-    const translations = {       gu: { 
-        mandiLoc: '📍 સજેંલી અનાજ મડંી (સજેંલી, જી. દાહોદ, ગજરાતુ	) | Sanjeli Grain Market',         brandTitle: 'અન ુ ટ્રેડંગ (ANU TRADING)', 
-        brandSub: 'સજેંલી અનાજ મડંી — ખડેતોૂ	 પાસથેી અનાજ-કઠોળની સીધી ખરીદી',         navAdmin: 'ભાવ અપડેટ (Admin)',         navCall: 'કોલ કરો', 
-        heroBadge: '✅ સજેંલી અનાજ મડંીમાં ખડેતોનીૂ	 િવશ્વસનીય પઢેી',         heroTitle: 'ખડેતૂ િમત્રો, તમારા પાકન ું મળેવો સાચ ું અને સવ ચ્ચ મલ્યૂ	',         heroDesc: 'અન ુ ટ્રેડંગ ખાતે મકાઈ, ઘઉં, સોયાબીન, ચણા, તવરેુ તથા તમામ અનાજ અને કઠોળની સૌથી ઊંચા બજાર ભાવે સીધી ખરીદી. ૧૦૦% સાચો ડજટલ કાટંો અને રોકડ અથવા બકેં ખાતામાં તરંતુ પમેન્ટે !', 
-        b1Title: '૧૦૦% સચોટ કાટંો', b1Sub: 'ડજટલ ચોક્કસ વજન',         b2Title: 'તરંતુ	 પમેન્ટે	', b2Sub: 'રોકડ અથવા બકેં ખાતામાં',         b3Title: 'સવ ચ્ચ બજાર ભાવ', b3Sub: 'દૈિનક લાઈવ રેટ મજબુ	',         b4Title: 'પારદશક વ્યવહાર', b4Sub: 'ખડેતોૂ	 સાથે વષ નો નાતો',         tableHead: '🌾 આજના દૈિનક ખરીદી ભાવ (Daily Purchase Rates)',         rateLoc: 'સ્થળ: અન ુ ટ્રેડંગ, સજેંલી મડંી',         shareWa: 'વ્હોટ્સએપ પર ભાવ શરે કરો',         editRates: 'ભાવ અપડેટ કરો',         thCrop: 'જણસી / પાક (Crop)',         thMann: 'ભાવ પ્રિત ૨૦ કલો (મણ / Mann)',         thQtl: 'ભાવ પ્રિત ૧૦૦ કલો (ક્વન્ટલ / Qtl)',         thTrend: 'બજાર વલણ (Trend)',         thAction: 'પછપરછૂ	',         qualityNote: 'ℹ <strong>નોંધ:</strong> દશાવલે ભાવ સામાન્ય સકાૂ અને સાફ માલ માટેના છે. માલમાં ભજેન ું પ્રમાણ અને દાણાની ક્વોલટી અનસારુ	 ભાવમાં વધ-ઘટ થઈ શકે છે. માલ લાવતા પહલાંે	 ફોન પર પટુ	 કરી લવેી.', 
-        calcHead: '🧮 ખડેતૂ ગણતરી યત્રં (Crop Value Calculator)', 
-        calcSub: 'તમારી જણસી પસદં કરી વજન નાખો અને તમારો અંદાજત કલૂ રોકડ નફો જાણો:',         lblCrop: 'જણસી પસદં કરો:',         lblWeight: 'કલૂ વજન:',         lblUnit: 'એકમ (Unit):',         calcResLbl: 'અંદાજત મળવાપાત્ર રકમ (Estimated Payout)',         btnCalcWa: 'આ જણસી વચેવા માટે વ્હોટ્સએપ કરો',         guideHead: '📋 માલ લાવનાર ખડેતોૂ	 માટે અગત્યની સચનાૂ	', 
-        g1Title: 'સકોૂ અને સાફ માલ લાવો:', g1Desc: 'દાણામાં ભજે ઓછો અને કચરો/ધળૂ વગરનો સાફ માલ લાવવાથી સવ ચ્ચ બજાર ભાવ મળે છે.', 
-        g2Title: 'ડજટલ કાટંા પર ચોક્કસ વજન:', g2Desc: 'અમારી પઢેી ખાતે સરકારી માન્યતા પ્રાપ્ત ઇલક્ેટ્રોિનક કાટંાથી પારદશક વજન કરવામાં આવે છે.',         g3Title: 'તરંતુ	 પમેન્ટનીે	 ખાતરી:', g3Desc: 'રોકડ રકમ અથવા તમારા બકેં ખાતામાં 
-RTGS/NEFT/UPI દ્વારા તરંતુ	 પસૈા જમા.', 
-        g4Title: 'મોટા જથ્થા / ગાડી માટે અગાઉથી જાણ:', g4Desc: 'ટ્રેક્ટર અથવા આઈશર ભરીને માલ લાવવા માગંતા હો તો અગાઉથી ફોન કરી સમય નક્કી કરી શકો છો.', 
-        contactHead: '📞 સપંક સત્રૂ — અન ુ ટ્રેડંગ (Anu Trading)', 
-        contactSub: 'માલ વચેવા, દૈિનક ભાવની પછપરછૂ અથવા મડંીમાં ગાડી ખાલી કરાવવા માટે સીધો સપંક કરો:', 
-        addrTitle: 'પઢેીન ું સરનામ ું (Mandi Address):',         addrDesc: 'અન ુ ટ્રેડંગ (Anu Trading), અનાજ માકટ યાડ / એ.પી.એમ.સી., સજેંલી, જલ્લો દાહોદ, ગજરાતુ - ૩૮૯૧૭૫', 
-        datePrefix: 'તારીખ: ' 
-      }, 
-      hi: { 
-        mandiLoc: '📍 सजंेली अनाज मडंी (सजंेली, िजला दाहोद, गजरातु	) | Sanjeli Grain Mandi',         brandTitle: 'अन ु ट्रेडगं (ANU TRADING)', 
-        brandSub: 'सजंेली अनाज मडंी — कसानों से अनाज व दलहन की सीधी खरीद',         navAdmin: 'भाव अपडटे (Admin)',         navCall: 'कॉल करें', 
-        heroBadge: '✅ सजंेली अनाज मडंी में कसानों की भरोसेमदं फम',         heroTitle: 'कसान भाइयों, अपनी उपज का पाएं सही और सव त्तम मल्यू	', 
-        heroDesc: 'अन ु ट्रेडगं पर मक्का, गेहूं, सोयाबीन, चना, तवरु	 एवं सभी अनाज-दलहन की उच्चतम बाजार भाव पर सीधी खरीद। १००% सही डिजटल कांटा और नकद या बकैं खाते में तरंतु	 भगतानु	!',         b1Title: '१००% सही कांटा', b1Sub: 'सटीक इलेक्ट्रॉनक तौल',         b2Title: 'तरंतु	 भगतानु	', b2Sub: 'हाथों-हाथ नकद या बकैं खाता',         b3Title: 'उच्चतम बाजार भाव', b3Sub: 'दैनक लाइव मडंी रेट',         b4Title: 'पारदश व्यवहार', b4Sub: 'कसानों का सच्चा वश्वास', 
-        tableHead: '🌾 आज के दैनक खरीद भाव (Daily Purchase Rates)',         rateLoc: 'स्थान: अन ु ट्रेडगं , सजंेली मडंी',         shareWa: 'व्हाट्सएप पर भाव शयेर करें',         editRates: 'भाव अपडटे करें',         thCrop: 'उपज / िजसं (Crop)',         thMann: 'भाव प्रत २० कलो (मण / Mann)',         thQtl: 'भाव प्रत १०० कलो (िक्वटलं	 / Qtl)',         thTrend: 'मडंी रुख (Trend)',         thAction: 'पछताछू	', 
-        qualityNote: 'ℹ <strong>नोट:</strong> दए गए भाव सामान्य सखेू व साफ माल के लए हैं। नमी की मात्रा एवं दाने की गणवत्ताु	 के अनसारु	 भाव तय होंगे। माल लाने से पवू फोन पर पिष्टु	 करें।',         calcHead: '🧮 कसान कै लकु लेटर (Crop Value Calculator)', 
-        calcSub: 'अपनी फसल चनु ें, वजन डालें और अपनी कु ल मलने वाली रकम जानें:',         lblCrop: 'फसल / िजसं चनु ें:',         lblWeight: 'कु ल वजन:',         lblUnit: 'इकाई (Unit):', 
-        calcResLbl: 'अनमाु	नत कु ल भगतानु	 राश (Estimated Payout)',         btnCalcWa: 'यह माल बेचने हेत ु व्हाट्सएप पर सपंक करें',         guideHead: '📋 माल लाने वाले कसान भाइयों के लए नदश', 
-        g1Title: 'सखाू और साफ माल लाएं:', g1Desc: 'दाने में नमी कम और कचरा/मट्टी न होने पर सबसे ऊं चा भाव मलता है।', 
-        g2Title: 'डिजटल कांटे पर सटीक तौल:', g2Desc: 'हमारी दकानु पर सरकारी मानक डिजटल कांटे से नष्पक्ष तौल की जाती है।', 
-        g3Title: 'हाथों-हाथ तरंतु भगतानु :', g3Desc: 'नकद या बकैं खाते में RTGS/NEFT/UPI द्वारा त्वरत भगतान।ु	', 
-        g4Title: 'बड़ी गाड़ी / ट्रैक्टर की पवू सचनाू	:', g4Desc: 'ट्रैक्टर या आयशर भरकर माल लाने से पहले फोन कर समय तय कर सकते हैं।',         contactHead: '📞 सपंक सत्रू — अन ु ट्रेडगं (Anu Trading)', 
-        contactSub: 'माल बेचने, दैनक भाव पछताछू	 या गाड़ी खाली कराने हेत ु सीधे सपंक करें:', 
-        addrTitle: 'दकानु	 का पता (Mandi Address):',         addrDesc: 'अन ु ट्रेडगं (Anu Trading), अनाज माकट याड / ए.पी.एम.सी., सजंेली, िजला दाहोद, गजरातु
-- 389175', 
-        datePrefix: 'दनांक: ' 
-      },       en: { 
-        mandiLoc: '📍 Sanjeli Grain Market Yard (Sanjeli, Dahod Dist, Gujarat)',         brandTitle: 'ANU TRADING',         brandSub: 'Sanjeli Anaj Mandi — Direct Agricultural Produce Buyer from Farmers',         navAdmin: 'Update Rates (Admin)',         navCall: 'Call Us',         heroBadge: '✅ Trusted Trader in Sanjeli Anaj Mandi',         heroTitle: 'Farmers, Get The Highest Market Rate For Your Crops',         heroDesc: 'Direct purchase of Maize, Wheat, Soybean, Gram, Tuver, and all grains at competitive daily rates. 100% accurate digital weighing and immediate spot cash or bank transfer payment!',         b1Title: '100% Accurate Scale', b1Sub: 'Certified digital weighing',         b2Title: 'Instant Payment', b2Sub: 'Spot cash or direct bank transfer',         b3Title: 'Best Daily Rates', b3Sub: 'Updated daily as per live market',         b4Title: 'Honest Trading', b4Sub: 'Years of trusted farmer partnerships',         tableHead: '🌾 Today's Purchase Rates (Daily Mandi Bhav)',         rateLoc: 'Location: Anu Trading, Sanjeli Mandi',         shareWa: 'Share Rates on WhatsApp',         editRates: 'Update Rates',         thCrop: 'Crop Name',         thMann: 'Rate per 20 KG (Mann)',         thQtl: 'Rate per 100 KG (Quintal)',         thTrend: 'Market Trend',         thAction: 'Inquire',         qualityNote: 'ℹ <strong>Note:</strong> Quoted rates are for standard dry, cleaned crops. Final price depends on moisture content and seed purity. Please call before dispatching large loads.',         calcHead: '🧮 Farmer Crop Value Calculator',         calcSub: 'Select your crop, enter weight, and calculate your estimated total earnings:',         lblCrop: 'Select Crop:',         lblWeight: 'Total Weight:',         lblUnit: 'Weight Unit:',         calcResLbl: 'Estimated Payout Amount',         btnCalcWa: 'Send Crop Inquiry on WhatsApp',         guideHead: '📋 Farmer Guidelines for Maximum Price',         g1Title: 'Bring Dry & Clean Produce:', g1Desc: 'Low moisture and dust-free seeds fetch the highest market premium.',         g2Title: 'Precise Digital Weighing:', g2Desc: 'Fully transparent electronic weighbridge with zero unfair cuts.',         g3Title: 'Guaranteed Instant Payment:', g3Desc: 'Immediate cash payout or instant transfer via NEFT/RTGS/UPI.', 
-        g4Title: 'Bulk Vehicle Arrivals:', g4Desc: 'For full tractor or truck loads, call ahead to reserve priority unloading.',         contactHead: '📞 Contact Directory — Anu Trading',         contactSub: 'For selling crops, daily rate quotes, or gate unloading schedule:',         addrTitle: 'Mandi Office Address:',         addrDesc: 'Anu Trading, APMC / Grain Market Yard, Sanjeli, District Dahod, Gujarat - 
-389175', 
-        datePrefix: 'Date: ' 
-      } 
-    }; 
- 
-    // Default Crops     const defaultCrops = [ 
-      { id: 'makka_yellow', name_gu: 'પીળી મકાઈ (Yellow Maize)', name_hi: 'पीली मक्का (Yellow 
-Maize)', name_en: 'Yellow Maize (Makka)', sub: 'સકીૂ ઉત્તમ મકાઈ', mannRate: 460, quintalRate: 
-2300, trend: 'ઉંચકાવ (Strong)', trendClass: 'trend-up' }, 
-      { id: 'makka_white', name_gu: 'સફેદ મકાઈ (White Maize)', name_hi: 'सफे द मक्का (White 
-Maize)', name_en: 'White Maize (Makka)', sub: 'દાહોદ સ્પેિશયલ', mannRate: 510, quintalRate: 
-2550, trend: 'સ્થર (Stable)', trendClass: 'trend-stable' }, 
-      { id: 'gehu_lokvan', name_gu: 'ઘઉં લોકવન (Wheat Lokwan)', name_hi: 'गेहूं लोकवन (Wheat)', name_en: 'Wheat (Lokwan)', sub: 'સાફ બોલ્ડ દાણા', mannRate: 540, quintalRate: 2700, trend: 
-'મજબતૂ (High)', trendClass: 'trend-up' }, 
-      { id: 'gehu_tukdi', name_gu: 'ઘઉં ટુકડી (Wheat Tukdi)', name_hi: 'गेहूं टुकड़ी (Wheat Tukdi)', name_en: 'Wheat (Tukdi)', sub: 'પ્રીિમયમ ક્વોલટી', mannRate: 580, quintalRate: 2900, trend: 
-'માગં વધ',ુ trendClass: 'trend-high' }, 
-      { id: 'chana_desi', name_gu: 'દેશી ચણા (Gram / Chana)', name_hi: 'देशी चना (Gram / Chana)', name_en: 'Desi Gram / Chana', sub: 'સકાૂ દેશી ચણા', mannRate: 1220, quintalRate: 6100, trend: 
-'તજીે', trendClass: 'trend-up' }, 
-      { id: 'soyabean', name_gu: 'સોયાબીન (Soybean)', name_hi: 'सोयाबीन (Soybean)', name_en: 
-'Soybean', sub: 'તલેીબયાં ક્વોલટી', mannRate: 940, quintalRate: 4700, trend: 'સ્થર', trendClass: 
-'trend-stable' }, 
-      { id: 'tuver', name_gu: 'તવરેુ	 દેશી (Tuver / Arhar)', name_hi: 'तवरु	 अरहर (Tuver / Arhar)', name_en: 'Tuver / Pigeon Pea', sub: 'લાલ/સફેદ દેશી તવરેુ	', mannRate: 1650, quintalRate: 8250, trend: 'માગં વધ',ુ trendClass: 'trend-high' }, 
-      { id: 'urad', name_gu: 'અડદ (Black Gram / Urad)', name_hi: 'उड़द (Black Gram / Urad)', name_en: 'Black Gram / Urad', sub: 'નવા સાફ અડદ', mannRate: 1480, quintalRate: 7400, trend: 
-'સ્થર', trendClass: 'trend-stable' }, 
-      { id: 'raydo', name_gu: 'રાયડો / રાઈ (Mustard)', name_hi: 'रायड़ा / सरसों (Mustard)', name_en: 'Mustard Seeds (Rai)', sub: 'કાળી રાઈ', mannRate: 1040, quintalRate: 5200, trend: 'મજબતૂ ', trendClass: 'trend-up' }, 
-      { id: 'eranda', name_gu: 'દવલેા / એરંડા (Castor)', name_hi: 'अरंडी (Castor Seeds)', name_en: 'Castor Seeds (Eranda)', sub: 'સકાૂ સાફ દવલેા', mannRate: 1180, quintalRate: 5900, trend: 'સ્થર', trendClass: 'trend-stable' } 
-    ]; 
- 
-    let currentCrops = []; 
- 
-    function setLanguage(lang) {       currentLang = lang;       document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));       document.getElementById('btn-lang-' + lang).classList.add('active'); 
- 
-      const t = translations[lang];       document.getElementById('mandi-location-badge').textContent = t.mandiLoc;       document.getElementById('brand-title').textContent = t.brandTitle;       document.getElementById('brand-sub').textContent = t.brandSub;       document.getElementById('nav-admin-text').textContent = t.navAdmin;       document.getElementById('nav-call-text').textContent = t.navCall; 
- 
-      document.getElementById('hero-badge-text').textContent = t.heroBadge;       document.getElementById('hero-title-text').textContent = t.heroTitle;       document.getElementById('hero-desc-text').textContent = t.heroDesc; 
- 
-      document.getElementById('badge-1-title').textContent = t.b1Title;       document.getElementById('badge-1-sub').textContent = t.b1Sub;       document.getElementById('badge-2-title').textContent = t.b2Title;       document.getElementById('badge-2-sub').textContent = t.b2Sub;       document.getElementById('badge-3-title').textContent = t.b3Title;       document.getElementById('badge-3-sub').textContent = t.b3Sub;       document.getElementById('badge-4-title').textContent = t.b4Title;       document.getElementById('badge-4-sub').textContent = t.b4Sub; 
- 
-      document.getElementById('table-heading').textContent = t.tableHead;       document.getElementById('rate-location-text').textContent = t.rateLoc;       document.getElementById('share-wa-text').textContent = t.shareWa;       document.getElementById('btn-edit-rates-text').textContent = t.editRates;       document.getElementById('th-crop').textContent = t.thCrop;       document.getElementById('th-mann').textContent = t.thMann;       document.getElementById('th-qtl').textContent = t.thQtl;       document.getElementById('th-trend').textContent = t.thTrend;       document.getElementById('th-action').textContent = t.thAction;       document.getElementById('quality-note-text').innerHTML = t.qualityNote;       document.getElementById('calc-heading').textContent = t.calcHead;       document.getElementById('calc-sub-text').textContent = t.calcSub;       document.getElementById('lbl-select-crop').textContent = t.lblCrop;       document.getElementById('lbl-weight').textContent = t.lblWeight;       document.getElementById('lbl-unit').textContent = t.lblUnit;       document.getElementById('calc-res-label').textContent = t.calcResLbl;       document.getElementById('btn-calc-wa').textContent = t.btnCalcWa; 
- 
-      document.getElementById('guide-heading').textContent = t.guideHead;       document.getElementById('g1-title').textContent = t.g1Title;       document.getElementById('g1-desc').textContent = t.g1Desc;       document.getElementById('g2-title').textContent = t.g2Title;       document.getElementById('g2-desc').textContent = t.g2Desc;       document.getElementById('g3-title').textContent = t.g3Title;       document.getElementById('g3-desc').textContent = t.g3Desc;       document.getElementById('g4-title').textContent = t.g4Title;       document.getElementById('g4-desc').textContent = t.g4Desc; 
- 
-      document.getElementById('contact-heading').textContent = t.contactHead;       document.getElementById('contact-sub-text').textContent = t.contactSub;       document.getElementById('addr-title').textContent = t.addrTitle;       document.getElementById('addr-desc').textContent = t.addrDesc; 
- 
-      renderRatesTable();       populateCalculatorSelect();       calculateCropValue(); 
-    } 
- 
-    function getCropName(crop) {       if (currentLang === 'hi') return crop.name_hi || crop.name_gu;       if (currentLang === 'en') return crop.name_en || crop.name_gu;       return crop.name_gu; 
-    } 
- 
-    function loadCrops() {       const saved = localStorage.getItem('anu_trading_rates_v2');       if (saved) {         try { 
-          currentCrops = JSON.parse(saved); 
-        } catch (e) {           currentCrops = JSON.parse(JSON.stringify(defaultCrops)); 
-        } 
-      } else { 
-        currentCrops = JSON.parse(JSON.stringify(defaultCrops)); 
-      } 
-      renderRatesTable();       populateCalculatorSelect();       calculateCropValue(); 
-    } 
- 
-    function renderRatesTable() {       const tbody = document.getElementById('rates-table-body');       tbody.innerHTML = ''; 
- 
-      currentCrops.forEach(crop => {         const tr = document.createElement('tr');         const cName = getCropName(crop);         tr.innerHTML = ` 
-          <td> 
-            <div class="crop-name"> 
-              <span>🌾</span> ${cName} 
-            </div> 
-            <div class="crop-sub">${crop.sub || ''}</div> 
-          </td> 
-          <td> 
-            <span class="price-tag-mann">₹ ${crop.mannRate}</span> 
-          </td> 
-          <td> 
-            <span class="price-tag-quintal">₹ ${crop.quintalRate}</span> 
-          </td> 
-          <td> 
-            <span class="badge-trend ${crop.trendClass || 'trend-stable'}">${crop.trend || 'સ્થર'}</span> 
-          </td> 
-          <td> 
-            <a 
-href="https://wa.me/919825565053?text=નમસ્તે,%20મને%20${encodeURIComponent(cName)} %20વચેવા%20બાબતે%20પછવૂ	%20ું	છે." target="_blank" style="color: #25d366; font-weight: 700; text-decoration: none; font-size: 0.88rem;"> 
-              💬 Chat 
-            </a> 
-          </td> 
-        `; 
-        tbody.appendChild(tr); 
-      }); 
-      const today = new Date();       const options = { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' };       const locale = currentLang === 'hi' ? 'hi-IN' : (currentLang === 'gu' ? 'gu-IN' : 'en-IN');       document.getElementById('current-date-text').textContent = translations[currentLang].datePrefix + today.toLocaleDateString(locale, options);       document.getElementById('year-text').textContent = today.getFullYear(); 
-    } 
- 
-    function populateCalculatorSelect() {       const select = document.getElementById('calc-crop');       select.innerHTML = '';       currentCrops.forEach(crop => {         const opt = document.createElement('option');         opt.value = crop.id;         opt.textContent = `${getCropName(crop)} (₹ ${crop.mannRate}/મણ)`;         select.appendChild(opt); 
-      }); 
-    } 
- 
-    function calculateCropValue() {       const cropId = document.getElementById('calc-crop').value;       const weight = parseFloat(document.getElementById('calc-weight').value) || 0;       const unit = document.getElementById('calc-unit').value; 
- 
-      const crop = currentCrops.find(c => c.id === cropId) || currentCrops[0];       if (!crop) return; 
- 
-      let totalAmount = 0;       const mannPrice = crop.mannRate; // 20 kg       const kgPrice = mannPrice / 20; 
- 
-      if (unit === 'mann') {         totalAmount = weight * mannPrice; 
-      } else if (unit === 'quintal') {         totalAmount = (weight * 100) * kgPrice; 
-      } else if (unit === 'kg') {         totalAmount = weight * kgPrice; 
-      } 
- 
-      document.getElementById('calc-result-val').textContent = "₹ " + totalAmount.toLocaleString('en-IN', { maximumFractionDigits: 2 });       document.getElementById('calc-details').textContent = `ભાવ: ₹${crop.mannRate} પ્રિત ૨૦ કલો (₹${crop.quintalRate} પ્રિત ૧૦૦ કલો / ક્વન્ટલ)`; 
-    } 
- 
-    function sendCalculatorToWhatsApp() {       const cropId = document.getElementById('calc-crop').value;       const weight = document.getElementById('calc-weight').value || 0;       const unit = document.getElementById('calc-unit').value;       const crop = currentCrops.find(c => c.id === cropId);       const estAmount = document.getElementById('calc-result-val').textContent;       const cName = crop ? getCropName(crop) : ''; 
- 
-      let unitLabel = unit === 'mann' ? 'મણ (20 KG)' : (unit === 'quintal' ? 'ક્વન્ટલ (100 KG)' : 'કલો 
-(KG)'); 
- 
-      const message = `નમસ્તે અન ુ ટ્રેડંગ (સજેંલી મડંી), હ ું ખડેતૂ છું અને માલ વચેવા માગ ું છું: 
--	પાક: ${cName} 
--	અંદાજત જથ્થો: ${weight} ${unitLabel} - ગણતરી મજબુ	 રકમ: ${estAmount} માલ ક્યારે લાવી શકાય? િવગત આપશો.`; 
- 
-      const url = `https://wa.me/919825565053?text=${encodeURIComponent(message)}`;       window.open(url, '_blank'); 
-    } 
- 
-    function shareRatesOnWhatsApp(e) {       e.preventDefault();       const today = new Date().toLocaleDateString('gu-IN');       let text = `🌾 *અન ુ ટ્રેડંગ (સજેંલી અનાજ મડંી) - આજના ખરીદી ભાવ* 🌾 
-📅 તારીખ: ${today} 
------------------------------- 
-`; 
- 
-      currentCrops.forEach(c => {         text += `• ${getCropName(c)}: ₹${c.mannRate}/મણ (₹${c.quintalRate}/ક્વન્ટલ) 
-`; 
-      });        text += `------------------------------ 
-` + 
-              `✅ સાચો ઇલક્ેટ્રોિનક કાટંો અને રોકડ/ખાતામાં તરંતુ	 ચકવણીુ	! 
-` + 
-              `📞 સપંક: 
-` + 
-              `• કલ્પશે મહતાે	: 9825565053 
-` + 
-              `• સદંીપ મહતાે	: 9429840460 
-` + 
-              `📍 સ્થળ: સજેંલી અનાજ મડંી, જી. દાહોદ (ગજરાતુ	)`; 
- 
-      const url = `https://wa.me/?text=${encodeURIComponent(text)}`;       window.open(url, '_blank'); 
-    } 
- 
-    function openAdminModal() {       document.getElementById('admin-modal').classList.add('active');       document.getElementById('pin-section').style.display = 'block';       document.getElementById('editor-section').style.display = 'none';       document.getElementById('modal-footer').style.display = 'none';       document.getElementById('admin-pin').value = ''; 
-    } 
- 
-    function closeAdminModal() {       document.getElementById('admin-modal').classList.remove('active'); 
-    } 
- 
-    function verifyPin() {       const pin = document.getElementById('admin-pin').value;       if (pin === '1234') {         document.getElementById('pin-section').style.display = 'none';         document.getElementById('editor-section').style.display = 'block';         document.getElementById('modal-footer').style.display = 'flex';         renderEditRows(); 
-      } else {         alert('ખોટો િપન! કૃપા કરીને સાચો િપન દાખલ કરો (ડફોલ્ટ િપન: 1234)'); 
-      } 
-    } 
- 
-    function renderEditRows() {       const container = document.getElementById('crop-edit-list');       container.innerHTML = ''; 
- 
-      currentCrops.forEach((crop, index) => {         const row = document.createElement('div');         row.className = 'crop-edit-row';         row.innerHTML = ` 
-          <div> 
-            <input type="text" id="edit-name-${index}" value="${crop.name_gu}" placeholder="પાકન ું નામ"> 
-          </div> 
-          <div> 
-            <input type="number" id="edit-mann-${index}" value="${crop.mannRate}" placeholder="મણ ભાવ" oninput="autoUpdateQuintal(${index})"> 
-          </div> 
-          <div> 
-            <input type="number" id="edit-qtl-${index}" value="${crop.quintalRate}" placeholder="ક્વન્ટલ ભાવ"> 
-          </div> 
-          <div> 
-            <select id="edit-trend-${index}"> 
-              <option value="સ્થર (Stable)" ${crop.trend && crop.trend.includes('સ્થર') ? 'selected' : 
-''}>સ્થર</option> 
-              <option value="ઉંચકાવ (Strong)" ${crop.trend && crop.trend.includes('ઉંચકાવ') ? 
-'selected' : ''}>ઉંચકાવ</option> 
-              <option value="માગં વધ"ુ ${crop.trend && crop.trend.includes('માગં') ? 'selected' : 
-''}>માગં વધ<ુ /option> 
-              <option value="નરમ (Soft)" ${crop.trend && crop.trend.includes('નરમ') ? 'selected' : ''}>નરમ</option> 
-            </select> 
-          </div> 
-        `; 
-        container.appendChild(row); 
-      }); 
-    } 
- 
-    function autoUpdateQuintal(index) {       const mannInput = document.getElementById(`edit-mann-${index}`);       const qtlInput = document.getElementById(`edit-qtl-${index}`);       const mannVal = parseFloat(mannInput.value) || 0;       qtlInput.value = Math.round(mannVal * 5); 
-    } 
- 
-    function addNewCropPrompt() { 
-      const cropName = prompt('નવી જણસી / પાકન ું નામ દાખલ કરો:');       if (cropName && cropName.trim()) {         const newCrop = {           id: 'crop_' + Date.now(),           name_gu: cropName.trim(),           name_hi: cropName.trim(),           name_en: cropName.trim(), 
-          sub: 'નવી જણસી',           mannRate: 500,           quintalRate: 2500,           trend: 'સ્થર',           trendClass: 'trend-stable' 
-        }; 
-        currentCrops.push(newCrop);         renderEditRows(); 
-      } 
-    } 
- 
-    function saveUpdatedRates() {       currentCrops.forEach((crop, index) => {         const nameEl = document.getElementById(`edit-name-${index}`);         const mannEl = document.getElementById(`edit-mann-${index}`);         const qtlEl = document.getElementById(`edit-qtl-${index}`);         const trendEl = document.getElementById(`edit-trend-${index}`); 
- 
-        if (nameEl && mannEl && qtlEl) {           crop.name_gu = nameEl.value;           crop.name_hi = nameEl.value;           crop.name_en = nameEl.value;           crop.mannRate = parseFloat(mannEl.value) || 0;           crop.quintalRate = parseFloat(qtlEl.value) || 0;           crop.trend = trendEl.value;           crop.trendClass = crop.trend.includes('ઉંચકાવ') || crop.trend.includes('માગં') ? 'trend-up' : 
-'trend-stable'; 
-        } 
-      }); 
- 
-      localStorage.setItem('anu_trading_rates_v2', JSON.stringify(currentCrops));       renderRatesTable();       populateCalculatorSelect();       calculateCropValue();       closeAdminModal();       alert('ભાવ સફળતાપવૂ ક સવે થઈ ગયા છે અને વબેસાઈટ પર અપડેટ થઈ ગયા છે!'); 
-    } 
- 
-    function resetDefaultRates() {       if (confirm('શ ું તમે ડફોલ્ટ ભાવ પાછા લાવવા માગંો છો?')) { 
-        localStorage.removeItem('anu_trading_rates_v2');         currentCrops = JSON.parse(JSON.stringify(defaultCrops));         renderEditRows(); 
-      } 
-    } 
- 
-    window.addEventListener('DOMContentLoaded', () => {       loadCrops(); 
-    }); 
-  </script> 
-</body> 
-</html> 
- 
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,
+user-scalable=no">
+<title>Anu Trading | સજેં લી અનાજ મડં ી - દૈનિ ક ખરીદી ભાવ</title>
+<meta name="theme-color" content="#1b4332">
+<meta name="description" content="અનુટ્રેડિ ંગ - સજેં લી અનાજ મડં ી. ખેડતૂ ો પાસથે ી અનાજ અને
+કઠોળની સૌથી ઊંચા ભાવેખરીદી. કલ્પશે મહતે ા 9825565053, સદં ીપ મહતે ા 9429840460">
+<style>
+:root {
+--primary: #1b4332;
+--primary-dark: #0d281e;
+--primary-light: #2d6a4f;
+--accent: #d97706;
+--gold: #f59e0b;
+--bg: #f8fafc;
+--card-bg: #ffffff;
+--text: #0f172a;
+--text-muted: #64748b;
+--border: #e2e8f0;
+--success: #16a34a;
+--whatsapp: #25d366;
+--radius: 16px;
+--radius-sm: 10px;
+--shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+--shadow: 0 4px 12px rgba(0,0,0,0.07);
+--shadow-lg: 0 10px 25px -4px rgba(0,0,0,0.12);
+}
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+-webkit-tap-highlight-color: transparent;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Gujarati",
+"Noto Sans Devanagari", sans-serif;
+}
+body {
+background-color: var(--bg);
+color: var(--text); line-height: 1.5;
+padding-bottom: 80px; /* Space for mobile sticky footer */
+}
+/* Top Utility Header */
+.top-strip {
+background-color: #0b1f17;
+color: #94a3b8;
+font-size: 0.76rem;
+padding: 6px 14px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.lang-pills {
+display: flex;
+gap: 4px;
+align-items: center;
+}
+.lang-pill {
+background: rgba(255,255,255,0.1);
+color: #cbd5e1;
+border: none;
+padding: 3px 8px;
+border-radius: 6px;
+font-size: 0.72rem;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.2s;
+}
+.lang-pill.active {
+background: var(--gold);
+color: #0b1f17;
+font-weight: 800;
+}
+/* Main Header */
+header {
+background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); color: white;
+padding: 14px 16px;
+box-shadow: var(--shadow);
+position: sticky;
+top: 0;
+z-index: 40;
+}
+.header-wrap {
+max-width: 1000px;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.brand {
+display: flex;
+align-items: center;
+gap: 10px;
+text-decoration: none;
+color: white;
+}
+.brand-emblem {
+background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+width: 44px;
+height: 44px;
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.5rem;
+box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35);
+flex-shrink: 0;
+}
+.brand-title {
+font-size: 1.25rem;
+font-weight: 900;
+letter-spacing: 0.3px;
+line-height: 1.15;
+} .brand-tagline {
+font-size: 0.78rem;
+color: #cbd5e1;
+font-weight: 500;
+}
+.header-btn {
+background: rgba(255, 255, 255, 0.15);
+border: 1px solid rgba(255, 255, 255, 0.25);
+color: white;
+padding: 7px 12px;
+border-radius: 8px;
+font-size: 0.8rem;
+font-weight: 700;
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 6px;
+backdrop-filter: blur(4px);
+}
+/* Hero Banner */
+.hero {
+background: linear-gradient(180deg, var(--primary) 0%, #245a42 100%);
+color: white;
+padding: 24px 16px 44px;
+text-align: center;
+position: relative;
+}
+.hero-container {
+max-width: 800px;
+margin: 0 auto;
+}
+.badge-pill {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+background: rgba(245, 158, 11, 0.2);
+border: 1px solid rgba(245, 158, 11, 0.5);
+color: #fef08a; padding: 4px 12px;
+border-radius: 50px;
+font-size: 0.78rem;
+font-weight: 800;
+margin-bottom: 12px;
+letter-spacing: 0.4px;
+}
+.hero h1 {
+font-size: 1.6rem;
+font-weight: 900;
+line-height: 1.25;
+margin-bottom: 8px;
+}
+.hero p {
+font-size: 0.92rem;
+color: #e2e8f0;
+margin-bottom: 18px;
+line-height: 1.45;
+}
+/* Trust Pill Bar */
+.feature-strip {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 10px;
+max-width: 600px;
+margin: 0 auto;
+}
+@media (min-width: 640px) {
+.feature-strip {
+grid-template-columns: repeat(4, 1fr);
+}
+}
+.feature-item {
+background: rgba(255, 255, 255, 0.12);
+border: 1px solid rgba(255, 255, 255, 0.18);
+border-radius: 10px;
+padding: 10px 8px;
+text-align: center; backdrop-filter: blur(4px);
+}
+.feature-icon {
+font-size: 1.2rem;
+margin-bottom: 3px;
+}
+.feature-item span {
+display: block;
+font-size: 0.78rem;
+font-weight: 700;
+color: #f8fafc;
+}
+/* Content Layout */
+.main-wrapper {
+max-width: 1000px;
+margin: -24px auto 20px;
+padding: 0 14px;
+position: relative;
+z-index: 20;
+}
+/* Cards */
+.card {
+background: var(--card-bg);
+border-radius: var(--radius);
+box-shadow: var(--shadow);
+border: 1px solid var(--border);
+padding: 18px 16px;
+margin-bottom: 18px;
+}
+.card-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 10px;
+margin-bottom: 14px;
+border-bottom: 1.5px solid #f1f5f9;
+padding-bottom: 10px; }
+.card-title {
+font-size: 1.15rem;
+font-weight: 900;
+color: var(--primary-dark);
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.live-badge {
+display: inline-flex;
+align-items: center;
+gap: 5px;
+background: #dcfce7;
+color: #166534;
+font-size: 0.72rem;
+font-weight: 800;
+padding: 2px 8px;
+border-radius: 20px;
+}
+.live-dot {
+width: 7px;
+height: 7px;
+background-color: #16a34a;
+border-radius: 50%;
+animation: pulse 1.6s infinite;
+}
+@keyframes pulse {
+0% { transform: scale(1); opacity: 1; }
+50% { transform: scale(1.4); opacity: 0.4; }
+100% { transform: scale(1); opacity: 1; }
+}
+/* Daily Rates: Mobile Cards Layout */
+.rates-header-tools {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 12px; flex-wrap: wrap;
+gap: 8px;
+}
+.date-indicator {
+font-size: 0.82rem;
+color: var(--text-muted);
+font-weight: 600;
+}
+.btn-share-wa {
+background-color: var(--whatsapp);
+color: white;
+text-decoration: none;
+padding: 7px 12px;
+border-radius: 8px;
+font-size: 0.78rem;
+font-weight: 800;
+display: inline-flex;
+align-items: center;
+gap: 6px;
+box-shadow: 0 2px 6px rgba(37, 211, 102, 0.3);
+}
+.crops-grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 10px;
+}
+@media (min-width: 640px) {
+.crops-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+}
+.crop-card {
+background: #ffffff;
+border: 1.5px solid #e2e8f0;
+border-radius: 12px;
+padding: 12px 14px;
+display: flex;
+justify-content: space-between; align-items: center;
+gap: 10px;
+transition: all 0.2s;
+}
+.crop-card:hover {
+border-color: #cbd5e1;
+transform: translateY(-1px);
+box-shadow: var(--shadow-sm);
+}
+.crop-info {
+flex: 1;
+}
+.crop-title {
+font-size: 0.98rem;
+font-weight: 800;
+color: #0f172a;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+.crop-quality {
+font-size: 0.75rem;
+color: var(--text-muted);
+margin-top: 1px;
+}
+.crop-rates-block {
+text-align: right;
+}
+.mann-rate {
+font-size: 1.25rem;
+font-weight: 900;
+color: #065f46;
+background: #ecfdf5;
+padding: 2px 8px;
+border-radius: 6px;
+display: inline-block;
+line-height: 1.2; }
+.mann-sub {
+font-size: 0.68rem;
+font-weight: 700;
+color: #047857;
+display: block;
+}
+.qtl-rate {
+font-size: 0.78rem;
+font-weight: 700;
+color: #1e3a8a;
+margin-top: 3px;
+}
+.trend-pill {
+display: inline-block;
+font-size: 0.68rem;
+font-weight: 800;
+padding: 1px 6px;
+border-radius: 4px;
+margin-top: 4px;
+}
+.trend-up { background: #dcfce7; color: #15803d; }
+.trend-stable { background: #f1f5f9; color: #475569; }
+.trend-high { background: #fef3c7; color: #b45309; }
+/* Calculator */
+.calc-box {
+background: #f8fafc;
+border: 1px solid #e2e8f0;
+border-radius: 12px;
+padding: 14px;
+}
+.field-group {
+margin-bottom: 12px;
+}
+.field-label {
+display: block; font-size: 0.8rem;
+font-weight: 800;
+color: #334155;
+margin-bottom: 5px;
+}
+select, input[type="number"], input[type="text"], input[type="password"] {
+width: 100%;
+padding: 10px 12px;
+border: 1.5px solid #cbd5e1;
+border-radius: 8px;
+font-size: 0.95rem;
+background: white;
+font-weight: 600;
+color: #0f172a;
+}
+select:focus, input:focus {
+outline: none;
+border-color: var(--primary);
+box-shadow: 0 0 0 3px rgba(27, 67, 50, 0.15);
+}
+.unit-grid {
+display: grid;
+grid-template-columns: 2fr 1.2fr;
+gap: 10px;
+}
+.result-display {
+background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+border: 1.5px solid #86efac;
+border-radius: 10px;
+padding: 14px;
+text-align: center;
+margin: 12px 0;
+}
+.result-label {
+font-size: 0.78rem;
+font-weight: 700;
+color: #166534;
+text-transform: uppercase; }
+.result-value {
+font-size: 2rem;
+font-weight: 900;
+color: #14532d;
+margin: 2px 0;
+}
+.result-detail {
+font-size: 0.78rem;
+color: #15803d;
+font-weight: 600;
+}
+.btn-action-primary {
+width: 100%;
+background: var(--gold);
+color: #081c15;
+border: none;
+padding: 12px;
+border-radius: 8px;
+font-size: 0.95rem;
+font-weight: 800;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+text-decoration: none;
+box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
+}
+/* Contacts Cards */
+.partners-list {
+display: grid;
+grid-template-columns: 1fr;
+gap: 12px;
+}
+@media (min-width: 640px) {
+.partners-list {
+grid-template-columns: repeat(2, 1fr); }
+}
+.partner-tile {
+background: #ffffff;
+border: 1.5px solid #e2e8f0;
+border-radius: 14px;
+padding: 14px 16px;
+position: relative;
+overflow: hidden;
+box-shadow: var(--shadow-sm);
+}
+.partner-tile::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 4px;
+background: linear-gradient(90deg, var(--gold), var(--primary));
+}
+.partner-header {
+margin-bottom: 8px;
+}
+.partner-title {
+font-size: 1.15rem;
+font-weight: 900;
+color: var(--primary-dark);
+}
+.partner-sub {
+font-size: 0.75rem;
+color: var(--text-muted);
+}
+.partner-digits {
+font-size: 1.25rem;
+font-weight: 900;
+color: #0f172a;
+letter-spacing: 0.5px; margin-bottom: 12px;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+.btn-row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 8px;
+}
+.btn-touch-call {
+background: #f1f5f9;
+color: #0f172a;
+text-decoration: none;
+padding: 9px;
+border-radius: 8px;
+font-size: 0.85rem;
+font-weight: 800;
+text-align: center;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 6px;
+border: 1px solid #cbd5e1;
+}
+.btn-touch-wa {
+background: #ecfdf5;
+color: #15803d;
+text-decoration: none;
+padding: 9px;
+border-radius: 8px;
+font-size: 0.85rem;
+font-weight: 800;
+text-align: center;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 6px;
+border: 1px solid #bbf7d0;
+} /* Mandi Location Banner */
+.address-card {
+background: #f1f5f9;
+border-radius: 12px;
+padding: 12px 14px;
+display: flex;
+align-items: flex-start;
+gap: 12px;
+margin-top: 14px;
+}
+.address-icon {
+font-size: 1.4rem;
+flex-shrink: 0;
+}
+/* Farmer Tips */
+.tips-list {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+.tip-item {
+display: flex;
+gap: 10px;
+align-items: flex-start;
+font-size: 0.85rem;
+}
+.tip-bullet {
+background: #dcfce7;
+color: #166534;
+width: 22px;
+height: 22px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 900;
+font-size: 0.72rem;
+flex-shrink: 0; margin-top: 1px;
+}
+/* Modal */
+.modal {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.7);
+backdrop-filter: blur(4px);
+z-index: 100;
+align-items: center;
+justify-content: center;
+padding: 14px;
+}
+.modal.show {
+display: flex;
+}
+.modal-sheet {
+background: white;
+width: 100%;
+max-width: 580px;
+max-height: 88vh;
+border-radius: 16px;
+overflow: hidden;
+display: flex;
+flex-direction: column;
+box-shadow: var(--shadow-lg);
+}
+.modal-head {
+background: var(--primary-dark);
+color: white;
+padding: 14px 18px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.modal-title {
+font-size: 1.05rem; font-weight: 800;
+}
+.modal-close {
+background: none;
+border: none;
+color: white;
+font-size: 1.6rem;
+cursor: pointer;
+line-height: 1;
+}
+.modal-content {
+padding: 16px;
+overflow-y: auto;
+}
+.modal-foot {
+background: #f8fafc;
+padding: 12px 16px;
+border-top: 1px solid #e2e8f0;
+display: flex;
+justify-content: flex-end;
+gap: 10px;
+}
+.edit-crop-item {
+background: #f8fafc;
+border: 1px solid #e2e8f0;
+border-radius: 8px;
+padding: 10px;
+margin-bottom: 10px;
+}
+.edit-grid {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 8px;
+margin-top: 6px;
+}
+/* Mobile Sticky Bottom Bar */
+.mobile-bar { position: fixed;
+bottom: 0;
+left: 0;
+right: 0;
+background: #ffffff;
+border-top: 1.5px solid #e2e8f0;
+padding: 8px 12px;
+display: grid;
+grid-template-columns: 1.2fr 1.2fr 1fr 0.8fr;
+gap: 6px;
+z-index: 50;
+box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+}
+.bar-btn {
+text-decoration: none;
+border-radius: 8px;
+padding: 8px 4px;
+text-align: center;
+font-size: 0.72rem;
+font-weight: 800;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 2px;
+border: none;
+cursor: pointer;
+}
+.bar-btn-call1 {
+background: #0f172a;
+color: white;
+}
+.bar-btn-call2 {
+background: #1e3a8a;
+color: white;
+}
+.bar-btn-wa {
+background: var(--whatsapp);
+color: white; }
+.bar-btn-admin {
+background: #f1f5f9;
+color: #334155;
+border: 1px solid #cbd5e1;
+}
+/* Footer */
+footer {
+background: #0b1712;
+color: #94a3b8;
+padding: 24px 16px 10px;
+font-size: 0.78rem;
+text-align: center;
+}
+</style>
+</head>
+<body>
+<!-- Top Strip -->
+<div class="top-strip">
+<div id="mandi-top-text">📍 સજેં લી અનાજ મડં ી, જી. દાહોદ (ગજુ રાત)</div>
+<div class="lang-pills">
+<button class="lang-pill active" id="pill-gu" onclick="setLang('gu')">ગજુ રાતી</button>
+<button class="lang-pill" id="pill-hi" onclick="setLang('hi')">हि न्दी</button>
+<button class="lang-pill" id="pill-en" onclick="setLang('en')">EN</button>
+</div>
+</div>
+<!-- Header -->
+<header>
+<div class="header-wrap">
+<a href="#" class="brand">
+<div class="brand-emblem">🌾</div>
+<div>
+<div class="brand-title" id="txt-brand">અનુટ્રેડિ ંગ</div>
+<div class="brand-tagline" id="txt-mandi">સજેં લી અનાજ મડં ી (ANU TRADING)</div>
+</div>
+</a>
+<button class="header-btn" onclick="openAdmin()">
+⚙️ <span id="txt-admin-nav">ભાવ અપડેટ</span>
+</button> </div>
+</header>
+<!-- Hero Banner -->
+<section class="hero">
+<div class="hero-container">
+<div class="badge-pill" id="txt-hero-pill">⭐ સજેં લી મડં ીમાંખેડતૂ ોની નબં ર ૧ પસદં </div>
+<h1 id="txt-hero-h1">ખેડતૂ મિ ત્રો, પાકનુંમળે વો સર્વો ચ્ચ મલ્ૂય</h1>
+<p id="txt-hero-p">મકાઈ, ઘઉં, સોયાબીન, ચણા, તવુ રે તથા તમામ અનાજની સીધી ખરીદી. ૧૦૦%
+સાચો ડિ જિ ટલ કાટં ો અનેરોકડ અથવા બેંક ખાતામાંતરુંત પમે ન્ેટ!</p>
+<div class="feature-strip">
+<div class="feature-item">
+<div class="feature-icon">⚖️</div>
+<span id="f1-t">ડિ જિ ટલ કાટં ો</span>
+</div>
+<div class="feature-item">
+<div class="feature-icon">💵</div>
+<span id="f2-t">તરુંત પમે ન્ેટ</span>
+</div>
+<div class="feature-item">
+<div class="feature-icon">📈</div>
+<span id="f3-t">સર્વો ચ્ચ ભાવ</span>
+</div>
+<div class="feature-item">
+<div class="feature-icon">🤝</div>
+<span id="f4-t">વિ શ્વાસપાત્ર વપે ાર</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Container -->
+<main class="main-wrapper">
+<!-- Live Rates Card -->
+<section class="card" id="section-rates">
+<div class="card-header">
+<div class="card-title">
+<span>🌾</span>
+<span id="txt-rates-title">આજના ખરીદી ભાવ</span>
+<span class="live-badge"><span class="live-dot"></span> LIVE</span>
+</div> <a href="#" class="btn-share-wa" onclick="shareRatesOnWhatsApp(event)">
+📲 <span id="txt-share-wa">વ્હોટ્સએપ શરે</span>
+</a>
+</div>
+<div class="rates-header-tools">
+<div class="date-indicator" id="live-date-str">તારીખ: લોડ થઈ રહ્યુંછે...</div>
+<div style="font-size: 0.75rem; color: #047857; font-weight: 700;">
+📍 અનુટ્રેડિ ંગ, સજેં લી મડં ી
+</div>
+</div>
+<!-- Crop Cards Container -->
+<div class="crops-grid" id="crops-container">
+<!-- Rendered via JavaScript -->
+</div>
+<div style="margin-top: 14px; font-size: 0.76rem; color: #64748b; background: #f8fafc;
+padding: 10px 12px; border-radius: 8px; border: 1px dashed #cbd5e1;" id="txt-note">
+ℹ️ <strong>નોંધ:</strong> આપલે ા ભાવ સકૂા અનેસાફ માલના છે. ભેજ અનેકચરાના પ્રમાણ મજુ બ
+ભાવ નક્કી થશ.ેમાલ લાવતા પહલે ાંફોન પર પષ્ટિુષ્ટિ કરી લેવી.
+</div>
+</section>
+<!-- Crop Value Calculator -->
+<section class="card">
+<div class="card-header">
+<div class="card-title">
+<span>🧮</span>
+<span id="txt-calc-title">કિ સાન કેલ્ક્યલે ુ ટર (ગણતરી યત્રં )</span>
+</div>
+</div>
+<div class="calc-box">
+<div class="field-group">
+<label class="field-label" id="lbl-crop">જણસી પસદં કરો:</label>
+<select id="calc-crop-select" onchange="calcValue()">
+<!-- Populated via JS -->
+</select>
+</div>
+<div class="field-group unit-grid">
+<div> <label class="field-label" id="lbl-weight">કલૂ વજન:</label>
+<input type="number" id="calc-weight-input" value="20" min="1" oninput="calcValue()">
+</div>
+<div>
+<label class="field-label" id="lbl-unit">એકમ:</label>
+<select id="calc-unit-select" onchange="calcValue()">
+<option value="mann">મણ (20 KG)</option>
+<option value="quintal">ક્વિ ન્ટલ (100 KG)</option>
+<option value="kg">કિ લો (KG)</option>
+</select>
+</div>
+</div>
+<div class="result-display">
+<div class="result-label" id="txt-calc-res-lbl">અંદાજિ ત કલૂ રોકડ રકમ</div>
+<div class="result-value" id="calc-sum-text">₹ 0</div>
+<div class="result-detail" id="calc-detail-text">ભાવ વિ ગત</div>
+</div>
+<button class="btn-action-primary" onclick="sendCalculatedDeal()">
+💬 <span id="txt-btn-deal">આ માલ વચે વા માટેવ્હોટ્સએપ કરો</span>
+</button>
+</div>
+</section>
+<!-- Direct Contacts Card -->
+<section class="card">
+<div class="card-header">
+<div class="card-title">
+<span>📞</span>
+<span id="txt-contacts-title">સપં ર્ક સત્રૂ — અનુટ્રેડિ ંગ (Sanjeli)</span>
+</div>
+</div>
+<div class="partners-list">
+<!-- Kalpesh Mehta -->
+<div class="partner-tile">
+<div class="partner-header">
+<div class="partner-title">કલ્પશે પ્રવીણચદ્રં મહતે ા</div>
+<div class="partner-sub">Kalpesh Pravinchandra Mehta • ઓનર</div>
+</div>
+<div class="partner-digits">
+<span>📱</span> 98255 65053 </div>
+<div class="btn-row">
+<a href="tel:9825565053" class="btn-touch-call">
+📞 કોલ કરો
+</a>
+<a
+href="https://wa.me/919825565053?text=નમસ્ત%ે 20કલ્પશે ભાઈ,%20હ%ું 20સજેં લી%20મડં ીમા%ં 20મા
+લ%20વચે વા%20માટે%20પછૂ વા%20માગ%ું 20છુ.ં" target="_blank" class="btn-touch-wa">
+💬 WhatsApp
+</a>
+</div>
+</div>
+<!-- Sandeep Mehta -->
+<div class="partner-tile">
+<div class="partner-header">
+<div class="partner-title">સદં ીપ પ્રવીણચદ્રં મહતે ા</div>
+<div class="partner-sub">Sandeep Pravinchandra Mehta • ઓનર</div>
+</div>
+<div class="partner-digits">
+<span>📱</span> 94298 40460
+</div>
+<div class="btn-row">
+<a href="tel:9429840460" class="btn-touch-call">
+📞 કોલ કરો
+</a>
+<a
+href="https://wa.me/919429840460?text=નમસ્ત%ે 20સદં ીપભાઈ,%20હ%ું 20સજેં લી%20મડં ીમા%ં 20મા
+લ%20વચે વા%20માટે%20પછૂ વા%20માગ%ું 20છુ.ં" target="_blank" class="btn-touch-wa">
+💬 WhatsApp
+</a>
+</div>
+</div>
+</div>
+<!-- Address -->
+<div class="address-card">
+<div class="address-icon">🏬</div>
+<div>
+<strong id="txt-addr-title">દુકાન / પઢે ીનુંસરનામ:ું</strong>
+<p style="font-size: 0.82rem; color: #475569; margin-top: 2px;" id="txt-addr-desc">
+અનુટ્રેડિ ંગ (Anu Trading), અનાજ માર્કેટ યાર્ડ, સજેં લી, જિ લ્લો દાહોદ, ગજુ રાત - 389175
+</p> </div>
+</div>
+</section>
+<!-- Important Farmer Advice -->
+<section class="card">
+<div class="card-header">
+<div class="card-title">
+<span>📋</span>
+<span id="txt-tips-title">ખેડતૂ ો માટેઅગત્યની માહિ તી</span>
+</div>
+</div>
+<div class="tips-list">
+<div class="tip-item">
+<div class="tip-bullet">૧</div>
+<div>
+<strong id="tip1-t">સકૂો અનેસાફ માલ લાવો:</strong>
+<span style="color: #64748b;" id="tip1-d"> ભેજ વગરના અનેસાફ દાણાનો સૌથી ઊંચો ભાવ
+મળેછે.</span>
+</div>
+</div>
+<div class="tip-item">
+<div class="tip-bullet">૨</div>
+<div>
+<strong id="tip2-t">ડિ જિ ટલ કાટં ો:</strong>
+<span style="color: #64748b;" id="tip2-d"> કોમ્પ્યટુરાઈઝ્ડ કાટં ા પર પારદર્શકર્શ અનેસાચો
+તોલ.</span>
+</div>
+</div>
+<div class="tip-item">
+<div class="tip-bullet">૩</div>
+<div>
+<strong id="tip3-t">તરુંત પમે ન્ેટ:</strong>
+<span style="color: #64748b;" id="tip3-d"> રોકડ અથવા બેંક ખાતામાંRTGS/UPI દ્વારા
+તાત્કાલિ ક ચકુવણી.</span>
+</div>
+</div>
+<div class="tip-item">
+<div class="tip-bullet">૪</div>
+<div>
+<strong id="tip4-t">મોટી ગાડી માટેસમય નક્કી કરો:</strong>
+<span style="color: #64748b;" id="tip4-d"> ટ્રેક્ટર કેઆઈશર લાવતા પહલે ાંફોન કરી ખાલી કરવાનો સમય નક્કી કરો.</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Mobile Sticky Bottom Bar -->
+<div class="mobile-bar">
+<a href="tel:9825565053" class="bar-btn bar-btn-call1">
+<span>📞</span>
+<span>કલ્પશે ભાઈ</span>
+</a>
+<a href="tel:9429840460" class="bar-btn bar-btn-call2">
+<span>📞</span>
+<span>સદં ીપભાઈ</span>
+</a>
+<a
+href="https://wa.me/919825565053?text=નમસ્ત%ે 20અન%ુ 20ટ્રેડિ ંગ%20(સજેં લી%20મડં ી),%20આજ
+ના%20ભાવ%20બાબત%ે 20જાણવ%ું 20છે." target="_blank" class="bar-btn bar-btn-wa">
+<span>💬</span>
+<span>WhatsApp</span>
+</a>
+<button onclick="openAdmin()" class="bar-btn bar-btn-admin">
+<span>⚙️</span>
+<span>Admin</span>
+</button>
+</div>
+<!-- Admin Modal for Daily Rate Updates -->
+<div class="modal" id="adminModal">
+<div class="modal-sheet">
+<div class="modal-head">
+<div class="modal-title">⚙️ દૈનિ ક ખરીદી ભાવ અપડેટ (Admin)</div>
+<button class="modal-close" onclick="closeAdmin()">&times;</button>
+</div>
+<div class="modal-content">
+<!-- Auth Step -->
+<div id="admin-auth-pane" style="text-align: center; padding: 20px 0;">
+<p style="font-weight: 700; margin-bottom: 10px; color: #334155;">ભાવ બદલવા માટે
+સિ ક્યોરિ ટી પિ ન દાખલ કરો:</p> <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 12px;">
+<input type="password" id="pin-field" placeholder="PIN" style="max-width: 180px;
+text-align: center; font-size: 1.2rem; letter-spacing: 5px;">
+<button class="btn-action-primary" style="width: auto; padding: 8px 16px;"
+onclick="checkPin()">ઓકે</button>
+</div>
+<small style="color: #64748b;">(ડિ ફોલ્ટ પિ ન / Default PIN:
+<strong>1234</strong>)</small>
+</div>
+<!-- Editor Step -->
+<div id="admin-edit-pane" style="display: none;">
+<p style="font-size: 0.8rem; color: #64748b; margin-bottom: 12px;">
+મણ (૨૦ કિ લો) નો ભાવ નાખો, ક્વિ ન્ટલનો ભાવ આપોઆપ ગણાઈ જશ.ે
+</p>
+<div id="crop-edit-list">
+<!-- Populated via JS -->
+</div>
+<div style="display: flex; justify-content: space-between; gap: 8px; margin-top: 14px;">
+<button class="lang-pill" style="padding: 8px 12px; font-size: 0.8rem; background:
+#e2e8f0; color: #334155;" onclick="addNewCropPrompt()">
+➕ નવી જણસી
+</button>
+<button class="lang-pill" style="padding: 8px 12px; font-size: 0.8rem; background:
+#fee2e2; color: #b91c1c;" onclick="resetDefaults()">
+🔄 રીસટે ડિ ફોલ્ટ
+</button>
+</div>
+</div>
+</div>
+<div class="modal-foot" id="admin-foot" style="display: none;">
+<button class="lang-pill" style="padding: 8px 14px; background: #e2e8f0; color: #334155;"
+onclick="closeAdmin()">બધં કરો</button>
+<button class="btn-action-primary" style="width: auto; padding: 8px 18px;"
+onclick="saveRates()">💾 સવે કરો (Publish)</button>
+</div>
+</div>
+</div>
+<!-- Footer --> <footer>
+<p><strong>અનુટ્રેડિ ંગ (ANU TRADING)</strong> — સજેં લી અનાજ મડં ી, જી. દાહોદ (ગજુ રાત)</p>
+<p style="margin-top: 4px;">કલ્પશે મહતે ા: 9825565053 | સદં ીપ મહતે ા: 9429840460</p>
+<p style="margin-top: 6px; color: #64748b;">© 2026 Anu Trading Sanjeli. All rights
+reserved.</p>
+</footer>
+<script>
+let currentLang = 'gu';
+const defaultCrops = [
+{ id: 'c1', gu: 'પીળી મકાઈ (Yellow Maize)', hi: 'पीली मक्का (Yellow Maize)', en: 'Yellow Maize
+(Makka)', sub: 'સકૂી હાઈબ્રીડ', mann: 460, qtl: 2300, trend: 'ઉંચકાવ (Strong)', tClass: 'trend-up' },
+{ id: 'c2', gu: 'સફેદ મકાઈ (White Maize)', hi: 'सफेद मक्का (White Maize)', en: 'White Maize
+(Makka)', sub: 'દાહોદ સ્પશિેશિયલ', mann: 510, qtl: 2550, trend: 'સ્થિ ર (Stable)', tClass: 'trend-stable'
+},
+{ id: 'c3', gu: 'ઘઉં લોકવન (Wheat Lokwan)', hi: 'गेहूं लोकवन (Wheat)', en: 'Wheat (Lokwan)',
+sub: 'બોલ્ડ દાણા', mann: 540, qtl: 2700, trend: 'મજબતૂ ', tClass: 'trend-up' },
+{ id: 'c4', gu: 'ઘઉં ટુકડી (Wheat Tukdi)', hi: 'गेहूं टुकड़ी (Wheat Tukdi)', en: 'Wheat (Tukdi)', sub:
+'પ્રીમિ યમ રોટલી', mann: 580, qtl: 2900, trend: 'માગં વધ'ુ, tClass: 'trend-high' },
+{ id: 'c5', gu: 'દેશી ચણા (Gram / Chana)', hi: 'देशी चना (Gram / Chana)', en: 'Desi Gram /
+Chana', sub: 'સકૂા સાફ', mann: 1220, qtl: 6100, trend: 'તજીે ', tClass: 'trend-up' },
+{ id: 'c6', gu: 'સોયાબીન (Soybean)', hi: 'सोयाबीन (Soybean)', en: 'Soybean', sub: 'તલે ીબિ યા'ં,
+mann: 940, qtl: 4700, trend: 'સ્થિ ર', tClass: 'trend-stable' },
+{ id: 'c7', gu: 'તવુ રે દેશી (Tuver / Arhar)', hi: 'तवु र अरहर (Tuver / Arhar)', en: 'Tuver / Pigeon
+Pea', sub: 'લાલ/સફેદ', mann: 1650, qtl: 8250, trend: 'માગં વધ'ુ, tClass: 'trend-high' },
+{ id: 'c8', gu: 'કાળા અડદ (Urad)', hi: 'कालेउड़द (Black Gram)', en: 'Black Gram (Urad)', sub:
+'નવા સાફ અડદ', mann: 1480, qtl: 7400, trend: 'સ્થિ ર', tClass: 'trend-stable' },
+{ id: 'c9', gu: 'રાયડો / રાઈ (Mustard)', hi: 'रायड़ा / सरसों (Mustard)', en: 'Mustard Seeds', sub:
+'કાળી રાઈ', mann: 1040, qtl: 5200, trend: 'મજબતૂ ', tClass: 'trend-up' },
+{ id: 'c10', gu: 'દિ વલે ા / એરંડા (Castor)', hi: 'अरंडी (Castor Seeds)', en: 'Castor Seeds', sub: 'સકૂા
+સાફ દિ વલે ા', mann: 1180, qtl: 5900, trend: 'સ્થિ ર', tClass: 'trend-stable' }
+];
+const i18n = {
+gu: {
+mandiTop: '📍 સજેં લી અનાજ મડં ી, જી. દાહોદ (ગજુ રાત)',
+brand: 'અનુટ્રેડિ ંગ',
+mandi: 'સજેં લી અનાજ મડં ી (ANU TRADING)',
+adminNav: 'ભાવ અપડેટ',
+heroPill: '⭐ સજેં લી મડં ીમાંખેડતૂ ોની નબં ર ૧ પસદં ',
+heroH1: 'ખેડતૂ મિ ત્રો, પાકનુંમળે વો સર્વો ચ્ચ મલ્ૂય',
+heroP: 'મકાઈ, ઘઉં, સોયાબીન, ચણા, તવુ રે તથા તમામ અનાજની સીધી ખરીદી. ૧૦૦% સાચો ડિ જિ ટલ કાટં ો અનેરોકડ અથવા બેંક ખાતામાંતરુંત પમે ન્ેટ!',
+f1: 'ડિ જિ ટલ કાટં ો', f2: 'તરુંત પમે ન્ેટ', f3: 'સર્વો ચ્ચ ભાવ', f4: 'વિ શ્વાસપાત્ર વપે ાર',
+ratesTitle: 'આજના ખરીદી ભાવ',
+shareWa: 'વ્હોટ્સએપ શરે',
+note: 'ℹ️ <strong>નોંધ:</strong> આપલે ા ભાવ સકૂા અનેસાફ માલના છે. ભેજ અનેકચરાના પ્રમાણ
+મજુ બ ભાવ નક્કી થશ.ેમાલ લાવતા પહલે ાંફોન પર પષ્ટિુષ્ટિ કરી લેવી.',
+calcTitle: 'કિ સાન કેલ્ક્યલે ુ ટર (ગણતરી યત્રં )',
+lblCrop: 'જણસી પસદં કરો:',
+lblWeight: 'કલૂ વજન:',
+lblUnit: 'એકમ:',
+calcResLbl: 'અંદાજિ ત કલૂ રોકડ રકમ',
+btnDeal: 'આ માલ વચે વા માટેવ્હોટ્સએપ કરો',
+contactsTitle: 'સપં ર્ક સત્રૂ — અનુટ્રેડિ ંગ (Sanjeli)',
+addrTitle: 'દુકાન / પઢે ીનુંસરનામ:ું',
+addrDesc: 'અનુટ્રેડિ ંગ (Anu Trading), અનાજ માર્કેટ યાર્ડ, સજેં લી, જિ લ્લો દાહોદ, ગજુ રાત -
+389175',
+tipsTitle: 'ખેડતૂ ો માટેઅગત્યની માહિ તી',
+tip1T: 'સકૂો અનેસાફ માલ લાવો:', tip1D: ' ભેજ વગરના અનેસાફ દાણાનો સૌથી ઊંચો ભાવ મળેછે.',
+tip2T: 'ડિ જિ ટલ કાટં ો:', tip2D: ' કોમ્પ્યટુરાઈઝ્ડ કાટં ા પર પારદર્શકર્શ અનેસાચો તોલ.',
+tip3T: 'તરુંત પમે ન્ેટ:', tip3D: ' રોકડ અથવા બેંક ખાતામાંRTGS/UPI દ્વારા તાત્કાલિ ક ચકુવણી.',
+tip4T: 'મોટી ગાડી માટેસમય નક્કી કરો:', tip4D: ' ટ્રેક્ટર કેઆઈશર લાવતા પહલે ાંફોન કરી ખાલી
+કરવાનો સમય નક્કી કરો.'
+},
+hi: {
+mandiTop: '📍 सजं ेली अनाज मडं ी, जि ला दाहोद (गजु रात)',
+brand: 'अनुट्रेडि गं ',
+mandi: 'सजं ेली अनाज मडं ी (ANU TRADING)',
+adminNav: 'भाव अपडटे ',
+heroPill: '⭐ सजं ेली मडं ी मेंकि सानों की पहली पसदं ',
+heroH1: 'कि सान भाइयों, अपनी उपज का पाएं उच्चतम मल्ूय',
+heroP: 'मक्का, गेहूं, सोयाबीन, चना, तवु र एवंसभी उपज की सीधी खरीद। १००% सही डि जि टल कांटा और
+नकद या बकैं खातेमेंतरुंत भगु तान!',
+f1: 'डि जि टल कांटा', f2: 'तरुंत भगु तान', f3: 'सर्वो त्तम भाव', f4: 'भरोसेमदं फर्म'र्म,
+ratesTitle: 'आज के खरीद भाव',
+shareWa: 'व्हाट्सएप शये र',
+note: 'ℹ️ <strong>नोट:</strong> दि ए गए भाव सखू ेव साफ माल के हैं। नमी व कचरेके अनसु ार भाव
+तय होंगे। माल लानेसेपर्वू र्वफोन पर सपं र्क करें।',
+calcTitle: 'कि सान कैलकुलेटर (Crop Calculator)',
+lblCrop: 'फसल चनु ें:',
+lblWeight: 'कुल वजन:',
+lblUnit: 'इकाई:',
+calcResLbl: 'अनमु ानि त कुल भगु तान राशि ',
+btnDeal: 'यह माल बेचनेहेतुव्हाट्सएप करें', contactsTitle: 'सपं र्क सत्रू — अनुट्रेडि गं (Sanjeli)',
+addrTitle: 'दकु ान / पेढ़ी का पता:',
+addrDesc: 'अनुट्रेडि गं (Anu Trading), अनाज मार्केट यार्ड,र्ड सजं ेली, जि ला दाहोद, गजु रात - 389175',
+tipsTitle: 'कि सानों के लि ए आवश्यक सचू ना',
+tip1T: 'सखू ा और साफ माल लाएं:', tip1D: ' बि ना नमी व साफ दानेका सबसेऊं चा भाव मि लता है।',
+tip2T: 'डि जि टल कांटा:', tip2D: ' कंप्यटू राइज्ड कांटेपर परूी पारदर्शि तर्शि ा सेसही तौल।',
+tip3T: 'तरुंत भगु तान:', tip3D: ' हाथों-हाथ नकद या बकैं खातेमेंRTGS/UPI द्वारा भगु तान।',
+tip4T: 'बड़ी गाड़ी की पर्वू र्वसचू ना:', tip4D: ' ट्रैक्टर या आयशर लानेसेपहलेखाली करनेका समय तय करें।'
+},
+en: {
+mandiTop: '📍 Sanjeli Grain Mandi, Dahod District (Gujarat)',
+brand: 'ANU TRADING',
+mandi: 'Sanjeli Grain Market (APMC)',
+adminNav: 'Update Rates',
+heroPill: '⭐ Trusted Grain Buyer in Sanjeli Mandi',
+heroH1: 'Farmers, Get The Highest Rates For Your Crops',
+heroDesc: 'Direct purchase of Maize, Wheat, Soybean, Gram, Tuver & pulses. 100%
+accurate digital weighing and instant cash or bank transfer!',
+f1: 'Digital Scale', f2: 'Instant Pay', f3: 'Best Rates', f4: 'Honest Dealing',
+ratesTitle: 'Daily Purchase Rates',
+shareWa: 'Share WhatsApp',
+note: 'ℹ️ <strong>Note:</strong> Quoted rates are for clean, dry crops. Price varies based
+on moisture and purity. Call to confirm before dispatch.',
+calcTitle: 'Farmer Crop Calculator',
+lblCrop: 'Select Crop:',
+lblWeight: 'Total Weight:',
+lblUnit: 'Unit:',
+calcResLbl: 'Estimated Total Cash Payout',
+btnDeal: 'Send This Crop Deal on WhatsApp',
+contactsTitle: 'Contact Directory — Anu Trading (Sanjeli)',
+addrTitle: 'Mandi Shop Address:',
+addrDesc: 'Anu Trading, APMC Grain Market Yard, Sanjeli, Dahod District, Gujarat -
+389175',
+tipsTitle: 'Guidelines for Best Price',
+tip1T: 'Dry & Clean Produce:', tip1D: ' Low moisture and dust-free grains fetch premium
+rates.',
+tip2T: 'Digital Weighbridge:', tip2D: ' Zero deductions with certified electronic scale.',
+tip3T: 'Instant Settlement:', tip3D: ' Instant spot cash or RTGS/NEFT/UPI transfer.',
+tip4T: 'Bulk Vehicle Arrivals:', tip4D: ' Call ahead for fast tractor/truck unloading.'
+}
+};
+let crops = []; function setLang(lang) {
+currentLang = lang;
+document.querySelectorAll('.lang-pill').forEach(b => b.classList.remove('active'));
+const activePill = document.getElementById('pill-' + lang);
+if (activePill) activePill.classList.add('active');
+const t = i18n[lang];
+document.getElementById('mandi-top-text').textContent = t.mandiTop;
+document.getElementById('txt-brand').textContent = t.brand;
+document.getElementById('txt-mandi').textContent = t.mandi;
+document.getElementById('txt-admin-nav').textContent = t.adminNav;
+document.getElementById('txt-hero-pill').textContent = t.heroPill;
+document.getElementById('txt-hero-h1').textContent = t.heroH1;
+document.getElementById('txt-hero-p').textContent = t.heroP || t.heroDesc;
+document.getElementById('f1-t').textContent = t.f1;
+document.getElementById('f2-t').textContent = t.f2;
+document.getElementById('f3-t').textContent = t.f3;
+document.getElementById('f4-t').textContent = t.f4;
+document.getElementById('txt-rates-title').textContent = t.ratesTitle;
+document.getElementById('txt-share-wa').textContent = t.shareWa;
+document.getElementById('txt-note').innerHTML = t.note;
+document.getElementById('txt-calc-title').textContent = t.calcTitle;
+document.getElementById('lbl-crop').textContent = t.lblCrop;
+document.getElementById('lbl-weight').textContent = t.lblWeight;
+document.getElementById('lbl-unit').textContent = t.lblUnit;
+document.getElementById('txt-calc-res-lbl').textContent = t.calcResLbl;
+document.getElementById('txt-btn-deal').textContent = t.btnDeal;
+document.getElementById('txt-contacts-title').textContent = t.contactsTitle;
+document.getElementById('txt-addr-title').textContent = t.addrTitle;
+document.getElementById('txt-addr-desc').textContent = t.addrDesc;
+document.getElementById('txt-tips-title').textContent = t.tipsTitle;
+document.getElementById('tip1-t').textContent = t.tip1T;
+document.getElementById('tip1-d').textContent = t.tip1D;
+document.getElementById('tip2-t').textContent = t.tip2T;
+document.getElementById('tip2-d').textContent = t.tip2D;
+document.getElementById('tip3-t').textContent = t.tip3T;
+document.getElementById('tip3-d').textContent = t.tip3D;
+document.getElementById('tip4-t').textContent = t.tip4T;
+document.getElementById('tip4-d').textContent = t.tip4D;
+renderCrops();
+populateCalc(); calcValue();
+}
+function getCropLabel(c) {
+if (currentLang === 'hi') return c.hi || c.gu;
+if (currentLang === 'en') return c.en || c.gu;
+return c.gu;
+}
+function initData() {
+const stored = localStorage.getItem('anu_trading_mobile_v3');
+if (stored) {
+try { crops = JSON.parse(stored); } catch (e) { crops = defaultCrops; }
+} else {
+crops = JSON.parse(JSON.stringify(defaultCrops));
+}
+setLang('gu');
+}
+function renderCrops() {
+const container = document.getElementById('crops-container');
+container.innerHTML = '';
+crops.forEach(c => {
+const name = getCropLabel(c);
+const card = document.createElement('div');
+card.className = 'crop-card';
+card.innerHTML = `
+<div class="crop-info">
+<div class="crop-title">
+<span>🌾</span>
+<span>${name}</span>
+</div>
+<div class="crop-quality">${c.sub || 'સાફ સકૂો માલ'}</div>
+<span class="trend-pill ${c.tClass || 'trend-stable'}">${c.trend || 'સ્થિ ર'}</span>
+</div>
+<div class="crop-rates-block">
+<div class="mann-rate">₹ ${c.mann}</div>
+<span class="mann-sub">પ્રતિ ૨૦ કિ લો (મણ)</span>
+<div class="qtl-rate">₹ ${c.qtl} / ક્વિ ન્ટલ</div>
+</div>
+`;
+container.appendChild(card); });
+const today = new Date();
+const locale = currentLang === 'hi' ? 'hi-IN' : (currentLang === 'en' ? 'en-IN' : 'gu-IN');
+document.getElementById('live-date-str').textContent = (currentLang === 'en' ? 'Date: ' :
+(currentLang === 'hi' ? 'दि नांक: ' : 'તારીખ: ')) + today.toLocaleDateString(locale, { day: 'numeric',
+month: 'short', year: 'numeric', weekday: 'short' });
+}
+function populateCalc() {
+const sel = document.getElementById('calc-crop-select');
+sel.innerHTML = '';
+crops.forEach(c => {
+const opt = document.createElement('option');
+opt.value = c.id;
+opt.textContent = `${getCropLabel(c)} (₹ ${c.mann}/મણ)`;
+sel.appendChild(opt);
+});
+}
+function calcValue() {
+const cid = document.getElementById('calc-crop-select').value;
+const weight = parseFloat(document.getElementById('calc-weight-input').value) || 0;
+const unit = document.getElementById('calc-unit-select').value;
+const crop = crops.find(x => x.id === cid) || crops[0];
+if (!crop) return;
+let total = 0;
+const perKg = crop.mann / 20;
+if (unit === 'mann') {
+total = weight * crop.mann;
+} else if (unit === 'quintal') {
+total = (weight * 100) * perKg;
+} else {
+total = weight * perKg;
+}
+document.getElementById('calc-sum-text').textContent = "₹ " +
+Math.round(total).toLocaleString('en-IN');
+document.getElementById('calc-detail-text').textContent = `ભાવ: ₹${crop.mann} પ્રતિ ૨૦ કિ લો
+(₹${crop.qtl} પ્રતિ ૧૦૦ કિ લો)`;
+} function sendCalculatedDeal() {
+const cid = document.getElementById('calc-crop-select').value;
+const weight = document.getElementById('calc-weight-input').value || 0;
+const unit = document.getElementById('calc-unit-select').value;
+const crop = crops.find(x => x.id === cid);
+const est = document.getElementById('calc-sum-text').textContent;
+const cName = crop ? getCropLabel(crop) : '';
+const unitTxt = unit === 'mann' ? 'મણ (20 KG)' : (unit === 'quintal' ? 'ક્વિ ન્ટલ (100 KG)' :
+'કિ લો');
+const msg = `નમસ્તેઅનુટ્રેડિ ંગ (સજેં લી મડં ી),
+હુંખેડતૂ છુંઅનેઆ પાક વચે વા માગુંછુ:ં
+• જણસી: ${cName}
+• જથ્થો: ${weight} ${unitTxt}
+• ગણતરી મજુ બ રકમ: ${est}
+માલ ક્યારેલાવી શકાય? વિ ગત જણાવશો.`;
+window.open(`https://wa.me/919825565053?text=${encodeURIComponent(msg)}`, '_blank');
+}
+function shareRatesOnWhatsApp(e) {
+if (e) e.preventDefault();
+const today = new Date().toLocaleDateString('gu-IN');
+let t = `🌾 *અનુટ્રેડિ ંગ (સજેં લી અનાજ મડં ી) - આજના ખરીદી ભાવ* 🌾
+📅 તારીખ: ${today}
+---------------------------------
+`;
+crops.forEach(c => {
+t += `• *${getCropLabel(c)}*: ₹${c.mann}/મણ (₹${c.qtl}/ક્વિ ન્ટલ)
+`;
+});
+t += `---------------------------------
+` +
+`✅ ૧૦૦% સાચો ડિ જિ ટલ કાટં ો અનેરોકડ/ખાતામાંતરુંત ચકુવણી!
+` +
+`📞 સપં ર્ક:
+` +
+`• કલ્પશે મહતે ા: 9825565053
+` +
+`• સદં ીપ મહતે ા: 9429840460
+` +
+`📍 સ્થળ: સજેં લી અનાજ મડં ી, જી. દાહોદ`;
+window.open(`https://wa.me/?text=${encodeURIComponent(t)}`, '_blank'); }
+function openAdmin() {
+document.getElementById('adminModal').classList.add('show');
+document.getElementById('admin-auth-pane').style.display = 'block';
+document.getElementById('admin-edit-pane').style.display = 'none';
+document.getElementById('admin-foot').style.display = 'none';
+document.getElementById('pin-field').value = '';
+}
+function closeAdmin() {
+document.getElementById('adminModal').classList.remove('show');
+}
+function checkPin() {
+const pin = document.getElementById('pin-field').value;
+if (pin === '1234') {
+document.getElementById('admin-auth-pane').style.display = 'none';
+document.getElementById('admin-edit-pane').style.display = 'block';
+document.getElementById('admin-foot').style.display = 'flex';
+renderEditor();
+} else {
+alert('ખોટો પિ ન! (ડિ ફોલ્ટ પિ ન: 1234)');
+}
+}
+function renderEditor() {
+const list = document.getElementById('crop-edit-list');
+list.innerHTML = '';
+crops.forEach((c, idx) => {
+const row = document.createElement('div');
+row.className = 'edit-crop-item';
+row.innerHTML = `
+<div style="display:flex; justify-content:space-between; align-items:center;">
+<strong style="font-size:0.85rem; color:#0f172a;">${c.gu}</strong>
+</div>
+<div class="edit-grid">
+<div>
+<span style="font-size:0.7rem; color:#64748b;">મણ ભાવ (૨૦ કિ )</span>
+<input type="number" id="ed-m-${idx}" value="${c.mann}" oninput="syncQtl(${idx})">
+</div>
+<div>
+<span style="font-size:0.7rem; color:#64748b;">ક્વિ ન્ટલ ભાવ</span> <input type="number" id="ed-q-${idx}" value="${c.qtl}">
+</div>
+<div>
+<span style="font-size:0.7rem; color:#64748b;">ટ્રેન્ડ</span>
+<select id="ed-t-${idx}">
+<option value="સ્થિ ર" ${c.trend && c.trend.includes('સ્થિ ર') ?
+'selected':''}>સ્થિ ર</option>
+<option value="ઉંચકાવ" ${c.trend && c.trend.includes('ઉંચકાવ') ?
+'selected':''}>ઉંચકાવ</option>
+<option value="માગં વધ"ુ ${c.trend && c.trend.includes('માગં ') ? 'selected':''}>માગં
+વધ<ુ /option>
+<option value="નરમ" ${c.trend && c.trend.includes('નરમ') ?
+'selected':''}>નરમ</option>
+</select>
+</div>
+</div>
+`;
+list.appendChild(row);
+});
+}
+function syncQtl(idx) {
+const mVal = parseFloat(document.getElementById(`ed-m-${idx}`).value) || 0;
+document.getElementById(`ed-q-${idx}`).value = Math.round(mVal * 5);
+}
+function addNewCropPrompt() {
+const n = prompt('નવી જણસી / પાકનુંનામ દાખલ કરો:');
+if (n && n.trim()) {
+crops.push({
+id: 'c_' + Date.now(),
+gu: n.trim(), hi: n.trim(), en: n.trim(),
+sub: 'નવી જણસી',
+mann: 500, qtl: 2500, trend: 'સ્થિ ર', tClass: 'trend-stable'
+});
+renderEditor();
+}
+}
+function saveRates() {
+crops.forEach((c, idx) => {
+const mEl = document.getElementById(`ed-m-${idx}`);
+const qEl = document.getElementById(`ed-q-${idx}`); const tEl = document.getElementById(`ed-t-${idx}`);
+if (mEl && qEl) {
+c.mann = parseFloat(mEl.value) || 0;
+c.qtl = parseFloat(qEl.value) || 0;
+c.trend = tEl.value;
+c.tClass = c.trend.includes('ઉંચકાવ') || c.trend.includes('માગં ') ? 'trend-up' : 'trend-stable';
+}
+});
+localStorage.setItem('anu_trading_mobile_v3', JSON.stringify(crops));
+renderCrops();
+populateCalc();
+calcValue();
+closeAdmin();
+alert('ભાવ સફળતાપર્વૂ કર્વ અપડેટ થઈ ગયા છે!');
+}
+function resetDefaults() {
+if (confirm('શુંતમેમળૂ ડિ ફોલ્ટ ભાવ પાછા લાવવા માગં ો છો?')) {
+localStorage.removeItem('anu_trading_mobile_v3');
+crops = JSON.parse(JSON.stringify(defaultCrops));
+renderEditor();
+}
+}
+window.addEventListener('DOMContentLoaded', initData);
+</script>
+</body>
+</html>
